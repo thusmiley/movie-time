@@ -1,0 +1,77 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+// base 
+@layer base 
+    *
+        box-sizing: border-box
+        margin: 0
+        padding: 0
+    
+    body
+        font-synthesis: none
+        text-rendering: optimizeLegibility
+        scroll-behavior: smooth
+        @apply font-outfit text-white bg-almostBlack
+
+    input,
+    textarea,
+    button,
+    select,
+    a 
+        -webkit-tap-highlight-color: transparent
+
+    img
+        display: block
+        width: 100%
+
+    .cat-heading
+        @apply text-[20px] tracking-[-.31px] font-light mb-6
+        @screen md 
+            @apply text-[32px] mb-[25px]
+
+// components
+@layer components
+    .menu-active svg path 
+        fill: white
+    .linear-bg
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.75) 100%)
+    .bookmarkBtn:hover svg path
+        @apply stroke-almostBlack
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active 
+        transition: #10141E 5000000s ease-in-out 0s
+        -webkit-box-shadow: 0 0 0 40px #10141E inset 
+        -webkit-text-fill-color: white 
+        background-clip: content-box 
+   
+
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration 
+        display: none
+
+// utitlities
+@layer utilities
+    .slide-in 
+        animation: slide-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both
+
+    @keyframes slide-in 
+        0% 
+            -webkit-transform: translateY(100px)
+            transform: translateY(100px)
+        100% 
+            -webkit-transform: translateY(0)
+            transform: translateY(0)
+
+    .form-bg
+        background: #3A3054 url('../public/images/bg-shorten-mobile.svg') no-repeat
+        background-size: contain
+        background-position: top -27px right 0
+        @screen md 
+            background: #3A3054 url('../public/images/bg-shorten-desktop.svg') no-repeat
