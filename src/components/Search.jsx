@@ -8,7 +8,7 @@ const Search = () => {
       <input
         type="search"
         placeholder="Search for movies or TV series"
-        className="w-full py-4 ml-4 bg-almostBlack focus:border-b-grey border-b-[1px] border-transparent outline-none caret-red text-[16px] placeholder:text-white/50 font-light md:text-[24px] md:ml-6"
+        className="w-full py-2 my-2 ml-4 bg-almostBlack focus:border-b-grey border-b-[1px] border-transparent outline-none caret-red text-[16px] placeholder:text-white/50 font-light md:text-[24px] md:ml-6 md:py-4 md:my-4"
       />
     </div>
   );
