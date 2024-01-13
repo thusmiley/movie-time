@@ -1,6 +1,5 @@
 import NavBar from "@/components/NavBar";
 import "./globals.css";
-import Search from "@/components/Search";
 
 export const metadata = {
   title: "Movie Time",
@@ -20,7 +19,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <NavBar />
-        <Search />
         {children}
       </body>
     </html>
