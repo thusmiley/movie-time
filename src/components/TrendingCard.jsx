@@ -1,20 +1,31 @@
+"use client";
 import Image from "next/image";
 import movieIcon from "../../public/images/icon-movie.svg";
 import tvIcon from "../../public/images/icon-tv.svg";
 import PlayButton from "./PlayButton";
 import BookmarkButton from "./BookmarkButton";
+import { BookmarkContext } from "@/context/providers";
 
-const TrendingCard = ({ movie }) => {
+const TrendingCard = ({ movie, favorited }) => {
+  // const context = useContext(BookmarkContext);
+
   return (
     <div>
-      <div className="relative group">
+      <div className="relative group cursor-pointer overflow-hidden rounded-[8px]">
         <picture>
           <source media="(max-width: 768px)" srcSet={movie.thumbnail.trending?.small} />
           <source media="(max-width: 1024px)" srcSet={movie.thumbnail.trending?.medium} />
           <source media="(min-width: 1025px)" srcSet={movie.thumbnail.trending?.large} />
-          <img src={movie.thumbnail.trending?.small} alt={`${movie.title} thumbnail`} className="w-full h-full rounded-[8px] object-cover" />
+          <img
+            src={movie.thumbnail.trending?.small}
+            alt={`${movie.title} thumbnail`}
+            className="w-full h-full rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
+          />
         </picture>
-        <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6">
+        <span
+          className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
+          onClick={() => context.toggleBookmark("favorited")}
+        >
           <BookmarkButton />
         </span>
 

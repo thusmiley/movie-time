@@ -9,8 +9,6 @@ import { BookmarkContext } from "@/context/providers";
 
 export default function Home({ props }) {
   const [searchInput, setSearchInput] = useState("");
-  const { favorited } = props;
-  const context = useContext(BookmarkContext)
 
   const filterAllMovies = data.filter((movie) => {
     if (searchInput === "") {

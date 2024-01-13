@@ -7,12 +7,16 @@ import BookmarkButton from "./BookmarkButton";
 const MovieCard = ({ movie }) => {
   return (
     <div className="">
-      <div className="relative group cursor-pointer">
+      <div className="relative group cursor-pointer overflow-hidden rounded-[8px]">
         <picture>
           <source media="(max-width: 768px)" srcSet={movie.thumbnail.regular?.small} />
           <source media="(max-width: 1024px)" srcSet={movie.thumbnail.regular?.medium} />
           <source media="(min-width: 1025px)" srcSet={movie.thumbnail.regular?.large} />
-          <img src={movie.thumbnail.regular?.small} alt={`${movie.title} thumbnail`} className="w-full h-full rounded-[8px] object-cover"/>
+          <img
+            src={movie.thumbnail.regular?.small}
+            alt={`${movie.title} thumbnail`}
+            className="w-full h-full rounded-[8px] object-cover hover:scale-105 transition-all duration-200 ease-in"
+          />
         </picture>
         <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-4">
           <BookmarkButton />
