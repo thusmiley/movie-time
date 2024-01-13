@@ -14,11 +14,11 @@ const TrendingCard = ({ movie }) => {
           <source media="(min-width: 1025px)" srcSet={movie.thumbnail.trending?.large} />
           <img src={movie.thumbnail.trending?.small} alt={`${movie.title} thumbnail`} className="w-full h-full rounded-[8px] object-cover" />
         </picture>
-        <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-4 right-6 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out">
+        <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6">
           <BookmarkButton />
         </span>
 
-        <div className="linear-bg p-6 w-full rounded-b-[8px] absolute bottom-0">
+        <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">
           <div className="text-[12px] font-light text-white/75 flex items-center space-x-2 md:text-[15px]">
             <p>{movie.year}</p>
             <span>•</span>

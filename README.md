@@ -17,8 +17,8 @@ MovieTime Website
 
 ### Links
 
-- Repository URL: 
-- Live Site URL: 
+- Repository URL: https://github.com/thusmiley/movie-time.git
+- Live Site URL: https://movie-time-ten.vercel.app/
 
 ### Built with
 
@@ -30,4 +30,3 @@ MovieTime Website
 - SwiperJS
 - Nextjs Router
 - Search
-# movie-time

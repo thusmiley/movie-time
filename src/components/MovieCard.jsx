@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
           <source media="(min-width: 1025px)" srcSet={movie.thumbnail.regular?.large} />
           <img src={movie.thumbnail.regular?.small} alt={`${movie.title} thumbnail`} className="w-full h-full rounded-[8px] object-cover"/>
         </picture>
-        <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-4 right-4 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out">
+        <span className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-4">
           <BookmarkButton />
         </span>
 
