@@ -3,7 +3,7 @@ import "./globals.css";
 import { BookmarkProvider } from "@/context/BookmarkContext";
 
 export const metadata = {
-  title: "Movie Time",
+  title: "Serial Chiller",
   description: "Made by Thu Smiley @Naughty Cat",
 };
 

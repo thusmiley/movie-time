@@ -1,4 +1,4 @@
-# MovieTime Website
+# Serial Chiller Website
 
 ## Table of contents
 
@@ -9,7 +9,7 @@
 
 ## Overview
 
-MovieTime Website
+Serial Chiller Website
 
 ### Screenshot
 
@@ -18,7 +18,7 @@ MovieTime Website
 ### Links
 
 - Repository URL: https://github.com/thusmiley/movie-time.git
-- Live Site URL: https://movie-time-ten.vercel.app/
+- Live Site URL: https://serial-chiller-ten.vercel.app/
 
 ### Built with
 

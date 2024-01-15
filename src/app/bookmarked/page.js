@@ -9,7 +9,6 @@ import SearchResults from "@/components/SearchResults";
 const Bookmarked = () => {
   const { favorited } = useBookmarkContext();
   const [searchInput, setSearchInput] = useState("");
-  console.log(favorited);
 
   const filterBookmarks = data.filter((movie) => {
     if (searchInput === "") {
