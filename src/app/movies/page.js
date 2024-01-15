@@ -3,7 +3,6 @@ import Search from "@/components/Search";
 import data from "../../utils/data";
 import MovieCard from "@/components/MovieCard";
 import { useState, useEffect } from "react";
-import Head from "next/head";
 import SearchResults from "@/components/SearchResults";
 
 const Movies = () => {
@@ -18,13 +17,8 @@ const Movies = () => {
   });
 
   return (
-    <div>
-      <Head>
-        <title>Movies | Movie Time</title>
-      </Head>
       <main className="min-h-screen mb-[60px]">
         <Search category={"Search for movies"} setSearchInput={setSearchInput} />
-
         {searchInput === "" ? (
           <section className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
             <h2 className="cat-heading font-light">Movies</h2>
@@ -37,7 +31,6 @@ const Movies = () => {
           <SearchResults filteredData={filterMovies} searchInput={searchInput} />
         )}
       </main>
-    </div>
   );
 };
 

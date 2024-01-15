@@ -40,6 +40,9 @@
   .linear-bg {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
   }
+  .bookmarkBtn:hover svg {
+    @apply scale-105 transition-all duration-200 ease-in-out;
+  }
   .bookmarkBtn:hover svg path {
     @apply stroke-almostBlack;
   }

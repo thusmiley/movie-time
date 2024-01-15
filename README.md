@@ -30,3 +30,4 @@ MovieTime Website
 - SwiperJS
 - Nextjs Router
 - Search
+- Local Storage

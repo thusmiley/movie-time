@@ -20,7 +20,6 @@ const TvSeries = () => {
     <main className="min-h-screen mb-[60px]">
       <Search category={"Search for TV series"} setSearchInput={setSearchInput} />
       {searchInput === "" ? (
-        <div>
           <section className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
             <h2 className="cat-heading font-light">TV Series</h2>
 
@@ -28,7 +27,6 @@ const TvSeries = () => {
               {data.map((movie, index) => movie.category === "TV Series" && <MovieCard key={index} movie={movie} />)}
             </div>
           </section>
-        </div>
       ) : (
         <SearchResults filteredData={filterTvseries} searchInput={searchInput} />
       )}

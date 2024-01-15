@@ -4,10 +4,10 @@ import movieIcon from "../../public/images/icon-movie.svg";
 import tvIcon from "../../public/images/icon-tv.svg";
 import PlayButton from "./PlayButton";
 import BookmarkButton from "./BookmarkButton";
-import { BookmarkContext } from "@/context/providers";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
-const TrendingCard = ({ movie, favorited }) => {
-  // const context = useContext(BookmarkContext);
+const TrendingCard = ({ movie }) => {
+  const { favorited, handleBookmarkClick } = useBookmarkContext();
 
   return (
     <div>
@@ -24,9 +24,11 @@ const TrendingCard = ({ movie, favorited }) => {
         </picture>
         <span
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
-          onClick={() => context.toggleBookmark("favorited")}
+          onClick={() => {
+            handleBookmarkClick(movie);
+          }}
         >
-          <BookmarkButton />
+          <BookmarkButton movie={movie} />
         </span>
 
         <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">
@@ -34,8 +36,8 @@ const TrendingCard = ({ movie, favorited }) => {
             <p>{movie.year}</p>
             <span>•</span>
             <div className="flex items-center space-x-[6px]">
-              {movie.category === "Movie" && <Image src={movieIcon} width={12} height={12} className="w-3 h-auto" alt="" />}
-              {movie.category === "TV Series" && <Image src={tvIcon} width={12} height={12} className="w-3 h-auto" alt="" />}
+              {movie.category === "Movie" && <Image src={movieIcon} width={12} height={12} className="w-3 h-3" alt="movie icon" />}
+              {movie.category === "TV Series" && <Image src={tvIcon} width={12} height={12} className="w-3 h-3" alt="tv icon" />}
               <p>{movie.category}</p>
             </div>
             <span>•</span>

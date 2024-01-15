@@ -1,5 +1,6 @@
 import NavBar from "@/components/NavBar";
 import "./globals.css";
+import { BookmarkProvider } from "@/context/BookmarkContext";
 
 export const metadata = {
   title: "Movie Time",
@@ -18,8 +19,10 @@ export default function RootLayout({ children }) {
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
       </head>
       <body>
-        <NavBar />
-        {children}
+        <BookmarkProvider>
+          <NavBar />
+          {children}
+        </BookmarkProvider>
       </body>
     </html>
   );
