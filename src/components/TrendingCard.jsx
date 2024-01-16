@@ -28,7 +28,7 @@ const TrendingCard = ({ movie }) => {
             handleBookmarkClick(movie);
           }}
         >
-          <BookmarkButton movie={movie} />
+          <BookmarkButton movie={movie} favorited={favorited} />
         </span>
 
         <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">

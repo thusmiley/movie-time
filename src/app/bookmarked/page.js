@@ -10,13 +10,27 @@ const Bookmarked = () => {
   const { favorited } = useBookmarkContext();
   const [searchInput, setSearchInput] = useState("");
 
-  const filterBookmarks = data.filter((movie) => {
+  const filterBookmarks = favorited.filter((movie) => {
     if (searchInput === "") {
       return movie;
     } else {
       return movie.title.toLowerCase().includes(searchInput);
     }
   });
+
+  let numMovies = 0;
+  let numTvs = 0;
+  const checkNumofShows = () => {
+    for (let item of favorited) {
+      if (item.category === "Movie") {
+        numMovies++;
+      }
+      if (item.category === "TV Series") {
+        numTvs++;
+      }
+    }
+  };
+  checkNumofShows();
 
   return (
     <main className="min-h-screen mb-[60px]">
@@ -26,11 +40,11 @@ const Bookmarked = () => {
         <div>
           {favorited.length === 0 ? (
             <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
-              <h2 className="cat-heading font-light">Sorry, there are currently no bookmaked movies.</h2>
+              <h2 className="cat-heading font-light">Sorry, there are currently no bookmaked movies or TV series.</h2>
             </section>
           ) : (
             <div>
-              <section className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
+              <section className={`${numMovies === 0 ? "hidden" : "block"} px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]`}>
                 <h2 className="cat-heading font-light">Bookmarked Movies</h2>
 
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
@@ -38,7 +52,7 @@ const Bookmarked = () => {
                 </div>
               </section>
 
-              <section className="px-4 mt-6  overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
+              <section className={`${numTvs === 0 ? "hidden" : "block"} px-4 mt-6  overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10`}>
                 <h2 className="cat-heading font-light">Bookmarked TV Series</h2>
 
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">

@@ -17,7 +17,7 @@ Serial Chiller Website
 
 ### Links
 
-- Repository URL: https://github.com/thusmiley/movie-time.git
+- Repository URL: https://github.com/thusmiley/serial-chiller.git
 - Live Site URL: https://serial-chiller-ten.vercel.app/
 
 ### Built with

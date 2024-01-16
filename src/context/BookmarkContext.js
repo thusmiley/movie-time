@@ -17,16 +17,14 @@ export function BookmarkProvider({ children }) {
   });
 
   const handleBookmarkClick = (movie) => {
-    if (movie.isBookmarked === false && !favorited?.includes(movie)) {
+    if (!favorited?.includes(movie)) {
       const updatedBookmark = [...favorited, movie];
       setFavorited(updatedBookmark);
       localStorage.setItem("bookmarked", JSON.stringify(updatedBookmark));
-      movie.isBookmarked = true;
-    } else if (movie.isBookmarked === true && favorited?.length > 0) {
+    } else {
       const updatedBookmark = favorited?.filter((item) => item.title !== movie.title);
       setFavorited(updatedBookmark);
       localStorage.setItem("bookmarked", JSON.stringify(updatedBookmark));
-      movie.isBookmarked = false;
     }
   };
 

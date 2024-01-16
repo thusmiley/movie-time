@@ -29,7 +29,7 @@ const MovieCard = ({ movie }) => {
             handleBookmarkClick(movie);
           }}
         >
-          <BookmarkButton movie={movie} />
+          <BookmarkButton movie={movie} favorited={ favorited} />
         </span>
 
         <div className="opacity-0 group-hover:opacity-100 absolute cursor-pointer top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out">
