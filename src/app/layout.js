@@ -1,6 +1,7 @@
 import NavBar from "@/components/NavBar";
 import "./globals.css";
 import { BookmarkProvider } from "@/context/BookmarkContext";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Serial Chiller",
@@ -15,13 +16,21 @@ export default function RootLayout({ children }) {
         <meta property="og:image" content="/preview.jpg" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <BookmarkProvider>
           <NavBar />
           {children}
+          <Footer />
         </BookmarkProvider>
       </body>
     </html>

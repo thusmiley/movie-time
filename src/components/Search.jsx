@@ -3,15 +3,22 @@ import Image from "next/image";
 import searchIcon from "../../public/images/icon-search.svg";
 import { useState, useEffect } from "react";
 
-const Search = ({ category, setSearchInput }) => {
+const Search = ({ category, setSearchInput, showMovies }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchInput(e.target.search.value.toLowerCase());
   };
 
   return (
-    <form className="flex items-center my-4 px-4 mx-auto md:px-[25px] md:my-[25px] xl:ml-[164px] xl:pt-[50px] xl:mt-0 xl:pl-0 xl:pr-[36px]" onSubmit={handleSubmit}>
-      <Image src={searchIcon} alt="search" className="w-6 h-auto object-contain object-center md:w-8" />
+    <form
+      className="flex items-center my-4 px-4 mx-auto md:px-[25px] md:my-[25px] xl:ml-[164px] xl:pt-[50px] xl:mt-0 xl:pl-0 xl:pr-[36px]"
+      onSubmit={handleSubmit}
+    >
+      <Image
+        src={searchIcon}
+        alt="search"
+        className="w-6 h-auto object-contain object-center md:w-8"
+      />
       <input
         type="search"
         name="search"
