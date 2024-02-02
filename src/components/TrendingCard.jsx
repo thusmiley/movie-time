@@ -12,25 +12,11 @@ const TrendingCard = ({ item, showMovies }) => {
   return (
     <div>
       <div className="relative group cursor-pointer overflow-hidden rounded-[8px]">
-        <picture>
-          <source
-            media="(max-width: 768px)"
-            srcSet={`https://image.tmdb.org/t/p/w328/${item.backdrop_path}`}
-          />
-          <source
-            media="(max-width: 1024px)"
-            srcSet={`https://image.tmdb.org/t/p/w440/${item.backdrop_path}`}
-          />
-          <source
-            media="(min-width: 1025px)"
-            srcSet={`https://image.tmdb.org/t/p/w560/${item.backdrop_path}`}
-          />
-          <img
-            src={`https://image.tmdb.org/t/p/w328/${item.backdrop_path}`}
-            alt={`${item.title} thumbnail`}
-            className="w-full h-full rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
-          />
-        </picture>
+        <img
+          src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+          alt={`${showMovies ? item.title : item.name} thumbnail`}
+          className="w-full h-full rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
+        />
         <span
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
           onClick={() => {
@@ -42,7 +28,11 @@ const TrendingCard = ({ item, showMovies }) => {
 
         <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">
           <div className="text-[12px] font-light text-white/75 flex items-center space-x-2 md:text-[15px]">
-            <p>{item.release_date}</p>
+            <p>
+              {showMovies
+                ? item.release_date?.slice(0, 4)
+                : item.first_air_date?.slice(0, 4)}
+            </p>
             <span>•</span>
             <div className="flex items-center space-x-[6px]">
               {showMovies ? (
@@ -62,17 +52,17 @@ const TrendingCard = ({ item, showMovies }) => {
                   alt="tv icon"
                 />
               )}
-              {showMovies ? <p>Movie</p> : <p>TV Series</p>}
+              <p>{showMovies ? "Movie" : "TV Series"}</p>
             </div>
             <span>•</span>
-            {item.adult ? <p>R</p> : <p>PG</p>}
+            <p>{item.adult ? "R" : "PG"}</p>
           </div>
           <h3 className="text-[15px] font-medium mt-1 md:text-[24px]">
-            {item.title}
+            {showMovies ? item.title : item.name}
           </h3>
         </div>
-        <div className="opacity-0 group-hover:opacity-100 absolute cursor-pointer top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out">
-          <PlayButton />
+        <div className="opacity-0 group-hover:opacity-100 absolute cursor-pointer top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out z-50">
+          <PlayButton videoId={item.id} showMovies={showMovies} />
         </div>
       </div>
     </div>

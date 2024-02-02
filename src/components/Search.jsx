@@ -3,7 +3,7 @@ import Image from "next/image";
 import searchIcon from "../../public/images/icon-search.svg";
 import { useState, useEffect } from "react";
 
-const Search = ({ category, setSearchInput, showMovies }) => {
+const Search = ({ category, setSearchInput }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchInput(e.target.search.value.toLowerCase());

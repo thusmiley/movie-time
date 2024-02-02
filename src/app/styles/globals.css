@@ -65,27 +65,4 @@
   input[type=search]::-webkit-search-results-decoration {
     display: none;
   }
-}
-@layer utilities {
-  .slide-in {
-    animation: slide-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-  @keyframes slide-in {
-    0% {
-      transform: translateY(100px);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  .form-bg {
-    background: #3A3054 url("../public/images/bg-shorten-mobile.svg") no-repeat;
-    background-size: contain;
-    background-position: top -27px right 0;
-  }
-  @screen md {
-    .form-bg {
-      background: #3A3054 url("../public/images/bg-shorten-desktop.svg") no-repeat;
-    }
-  }
 }/*# sourceMappingURL=globals.css.map */

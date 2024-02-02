@@ -1,5 +1,5 @@
 import NavBar from "@/components/NavBar";
-import "./globals.css";
+import "./styles/globals.css";
 import { BookmarkProvider } from "@/context/BookmarkContext";
 import Footer from "@/components/Footer";
 
