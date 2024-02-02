@@ -45,7 +45,7 @@ const PlayButton = ({ videoId, showMovies }) => {
         isOpen={modalIsOpen}
         className={`${
           modalIsOpen ? "relative" : "hidden"
-        } top-0 bottom-0 left-0 right-0 bg-black/60 w-full h-full grid place-content-center `}
+        } top-0 bottom-0 left-0 right-0 bg-black/70 w-full h-full grid place-content-center `}
         ariaHideApp={false}
       >
         <div>
@@ -54,7 +54,7 @@ const PlayButton = ({ videoId, showMovies }) => {
             alt="close"
             width={18}
             height={17}
-            className="w-[18px] h-auto object-contain mb-5 float-right cursor-pointer"
+            className="w-[18px] h-auto object-contain mb-5 float-right cursor-pointer hover:scale-105"
             onClick={() => setIsOpen(false)}
           />
         </div>

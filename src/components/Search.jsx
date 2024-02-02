@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 const Search = ({ category, setSearchInput }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchInput(e.target.search.value.toLowerCase());
+    setSearchInput(e.target.search.value);
   };
 
   return (
