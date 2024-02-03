@@ -1,20 +1,20 @@
 "use client";
-import Recommended from "@/components/Recommended";
+import Collection from "@/components/Collection";
 import Search from "@/components/Search";
-import Trending from "@/components/Trending";
+import HeroSlider from "@/components/HeroSlider";
 import { useState, useEffect, useContext } from "react";
 import "dotenv/config";
 import { options } from "@/utils";
 import SearchResults from "@/components/SearchResults";
 
 export default function Home() {
-  const [showMovies, setShowMovies] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState();
   const [page, setPage] = useState(1);
+  const [isMovie, setIsMovie] = useState(true);
 
   useEffect(() => {
-    showMovies
+    isMovie
       ? fetch(
           `https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=${page}`,
           options
@@ -37,33 +37,50 @@ export default function Home() {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search
-        category={`Search ${showMovies ? "movies" : "TV series"}`}
-        setSearchInput={setSearchInput}
-      />
+      <Search setSearchInput={setSearchInput} />
       {searchInput === "" ? (
-        showMovies ? (
+        isMovie ? (
           <div>
-            <Trending
-              showMovies={showMovies}
-              setShowMovies={setShowMovies}
+            <HeroSlider
+              isMovie={isMovie}
+              setIsMovie={setIsMovie}
+              title="Trending"
+              isHome={true}
+              list="trending"
+              mediaType="movie"
             />
-            <Recommended showMovies={showMovies} />
+            <Collection
+              isMovie={true}
+              title="Recommended movies for you"
+              page={page}
+              list="upcoming"
+              mediaType="movie"
+            />
           </div>
         ) : (
           <div>
-            <Trending
-              showMovies={showMovies}
-              setShowMovies={setShowMovies}
+            <HeroSlider
+              isMovie={false}
+              setIsMovie={setIsMovie}
+              title="Trending"
+              isHome={true}
+              list="trending"
+              mediaType="tv"
             />
-            <Recommended showMovies={showMovies} />
+            <Collection
+              isMovie={false}
+              title="Recommended TV series for you"
+              page={page}
+              list="on_the_air"
+              mediaType="tv"
+            />
           </div>
         )
       ) : (
         <SearchResults
           filteredData={filteredData}
           searchInput={searchInput}
-          showMovies={showMovies}
+          isMovie={isMovie}
           totalPages={filteredData.total_pages}
           page={page}
           setPage={setPage}

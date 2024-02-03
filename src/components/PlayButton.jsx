@@ -8,12 +8,12 @@ import ReactPlayer from "react-player/lazy";
 import Modal from "react-modal";
 import { options } from "@/utils";
 
-const PlayButton = ({ videoId, showMovies }) => {
+const PlayButton = ({ videoId, isMovie }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [videoKey, setVideoKey] = useState();
 
   useEffect(() => {
-    showMovies
+    isMovie
       ? fetch(
           `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`,
           options
@@ -58,7 +58,7 @@ const PlayButton = ({ videoId, showMovies }) => {
               : setVideoKey("");
           })
           .catch((err) => console.error(err));
-  }, [showMovies, videoId]);
+  }, [isMovie, videoId]);
 
   return (
     <div>

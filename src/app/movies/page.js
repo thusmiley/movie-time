@@ -5,13 +5,14 @@ import { options } from "@/utils";
 import Card from "@/components/Card";
 import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
-import Recommended from "@/components/Recommended";
+import Collection from "@/components/Collection";
+import HeroSlider from "@/components/HeroSlider";
 
 const Movies = () => {
-  const [showMovies, setShowMovies] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState();
   const [page, setPage] = useState(1);
+  const [isMovie, setIsMovie] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -30,13 +31,42 @@ const Movies = () => {
       <Search category={"Search for movies"} setSearchInput={setSearchInput} />
       {searchInput === "" ? (
         <div>
-          <div className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
-            <h2 className="cat-heading font-light">Movies</h2>
-          </div>
-          <Recommended />
+          <HeroSlider
+            isMovie={true}
+            setIsMovie={setIsMovie}
+            title="Trending Movies"
+            isHome={false}
+            list="trending"
+            mediaType="movie"
+          />
+          <Collection
+            isMovie={true}
+            title="Now Playing"
+            list="now_playing"
+            mediaType="movie"
+          />
+          <Collection
+            isMovie={true}
+            title="Popular"
+            list="popular"
+            mediaType="movie"
+          />
+          <Collection
+            isMovie={true}
+            title="Top Rated"
+            list="top_rated"
+            mediaType="movie"
+          />
         </div>
       ) : (
-        <SearchResults filteredData={filterMovies} searchInput={searchInput} />
+        <SearchResults
+          filteredData={filteredData}
+          searchInput={searchInput}
+          isMovie={true}
+          totalPages={filteredData.total_pages}
+          page={page}
+          setPage={setPage}
+        />
       )}
     </main>
   );

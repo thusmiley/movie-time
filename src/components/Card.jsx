@@ -7,7 +7,7 @@ import BookmarkButton from "./BookmarkButton";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 import { shimmer, toBase64 } from "@/utils";
 
-const Card = ({ item, showMovies }) => {
+const Card = ({ item, isMovie }) => {
   const {
     favoritedMovies,
     handleMoviesBookmarkClick,
@@ -38,12 +38,12 @@ const Card = ({ item, showMovies }) => {
         <span
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer  md:top-4 md:right-4"
           onClick={() => {
-            showMovies
+            isMovie
               ? handleMoviesBookmarkClick(item)
               : handleTvsBookmarkClick(item);
           }}
         >
-          {showMovies ? (
+          {isMovie ? (
             <BookmarkButton item={item} favorited={favoritedMovies} />
           ) : (
             <BookmarkButton item={item} favorited={favoritedTvs} />
@@ -51,14 +51,14 @@ const Card = ({ item, showMovies }) => {
         </span>
 
         <div className="opacity-0 group-hover:opacity-100 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out">
-          <PlayButton videoId={item.id} showMovies={showMovies} />
+          <PlayButton videoId={item.id} isMovie={isMovie} />
         </div>
       </div>
 
       <div className="mt-2">
         <div className="text-[11px] font-light text-white/75 flex items-center space-x-[6px] md:text-[13px]">
           <p>
-            {showMovies
+            {isMovie
               ? item.release_date
                 ? item.release_date?.slice(0, 4)
                 : "NA"
@@ -68,7 +68,7 @@ const Card = ({ item, showMovies }) => {
           </p>
           <span>•</span>
           <div className="flex items-center space-x-1">
-            {showMovies ? (
+            {isMovie ? (
               <Image
                 src={movieIcon}
                 width={12}
@@ -85,13 +85,13 @@ const Card = ({ item, showMovies }) => {
                 alt="tv icon"
               />
             )}
-            <p>{showMovies ? "Movie" : "TV Series"}</p>
+            <p>{isMovie ? "Movie" : "TV Series"}</p>
           </div>
           <span>•</span>
           <p>{item.adult ? "R" : "PG"}</p>
         </div>
         <h3 className="text-[14px] font-medium mt-1 md:text-[18px] md:mt-[5px]">
-          {showMovies ? item.title : item.name}
+          {isMovie ? item.title : item.name}
         </h3>
       </div>
     </div>

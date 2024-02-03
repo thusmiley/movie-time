@@ -69,7 +69,7 @@ const Bookmarked = () => {
             </h2>
           </section>
         ) : (
-          <div>
+          <div className="mt-6 xl:mt-10">
             <section
               className={`${
                 favoritedMovies.length === 0 ? "hidden" : "block"
