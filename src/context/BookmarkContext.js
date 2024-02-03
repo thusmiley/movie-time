@@ -9,6 +9,7 @@ export function useBookmarkContext() {
 
 export function BookmarkProvider({ children }) {
   const [favoritedMovies, setFavoritedMovies] = useState(() => {
+    // localStorage.clear();
     if (
       typeof window !== "undefined" &&
       localStorage.getItem("bookmarkedMovies") !== null
@@ -62,7 +63,7 @@ export function BookmarkProvider({ children }) {
     favoritedMovies,
     handleMoviesBookmarkClick,
     favoritedTvs,
-    handleTvsBookmarkClick
+    handleTvsBookmarkClick,
   };
 
   return (

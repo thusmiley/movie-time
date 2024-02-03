@@ -2,7 +2,7 @@
 import Search from "@/components/Search";
 import "dotenv/config";
 import { options } from "@/utils";
-import Card from "@/components/Card";
+import Card from "@/components/CollectionCard";
 import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
 import Collection from "@/components/Collection";
@@ -41,17 +41,20 @@ const Movies = () => {
           />
           <Collection
             isMovie={true}
+            limit={10}
             title="Now Playing"
             list="now_playing"
             mediaType="movie"
           />
           <Collection
+            limit={10}
             isMovie={true}
             title="Popular"
             list="popular"
             mediaType="movie"
           />
           <Collection
+            limit={10}
             isMovie={true}
             title="Top Rated"
             list="top_rated"

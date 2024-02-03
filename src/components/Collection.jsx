@@ -2,9 +2,9 @@
 import { useState, useEffect } from "react";
 import "dotenv/config";
 import { options } from "@/utils";
-import Card from "./Card";
+import CollectionCard from "./CollectionCard";
 
-const Collection = ({ isMovie, title, page, list, mediaType }) => {
+const Collection = ({ isMovie, title, page, list, mediaType, limit }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -24,8 +24,8 @@ const Collection = ({ isMovie, title, page, list, mediaType }) => {
       <h2 className="cat-heading font-light">{title}</h2>
 
       <div className="grid grid-cols-2 gap-4 row-span-1 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
-        {data?.results?.slice(0, 10).map((item, index) => (
-          <Card key={index} item={item} isMovie={isMovie} />
+        {data?.results?.slice(0, limit).map((item, index) => (
+          <CollectionCard key={index} item={item} isMovie={isMovie} />
         ))}
       </div>
     </section>

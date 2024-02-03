@@ -2,7 +2,6 @@
 import Search from "@/components/Search";
 import "dotenv/config";
 import { options } from "@/utils";
-import Card from "@/components/Card";
 import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
 import Collection from "@/components/Collection";
@@ -44,24 +43,28 @@ const TvSeries = () => {
           />
           <Collection
             isMovie={false}
+            limit={10}
             title="Airing Today"
             list="airing_today"
             mediaType="tv"
           />
           <Collection
             isMovie={false}
+            limit={10}
             title="Top Rated"
             list="top_rated"
             mediaType="tv"
           />
           <Collection
             isMovie={false}
+            limit={10}
             title="Popular"
             list="popular"
             mediaType="tv"
           />
           <Collection
             isMovie={false}
+            limit={10}
             title="On The Air"
             list="on_the_air"
             mediaType="tv"
@@ -69,8 +72,12 @@ const TvSeries = () => {
         </div>
       ) : (
         <SearchResults
-          filteredData={filterTvseries}
+          filteredData={filteredData}
           searchInput={searchInput}
+          isMovie={false}
+          totalPages={filteredData.total_pages}
+          page={page}
+          setPage={setPage}
         />
       )}
     </main>

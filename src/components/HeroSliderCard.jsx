@@ -5,25 +5,46 @@ import tvIcon from "../../public/images/icon-tv.svg";
 import PlayButton from "./PlayButton";
 import BookmarkButton from "./BookmarkButton";
 import { useBookmarkContext } from "@/context/BookmarkContext";
+import { shimmer, toBase64 } from "@/utils";
 
 const HeroSliderCard = ({ item, isMovie }) => {
-  const { favorited, handleBookmarkClick } = useBookmarkContext();
+  const {
+    favoritedMovies,
+    handleMoviesBookmarkClick,
+    favoritedTvs,
+    handleTvsBookmarkClick,
+  } = useBookmarkContext();
 
   return (
     <div>
       <div className="relative group cursor-pointer overflow-hidden rounded-[8px]">
-        <img
-          src={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-          alt={`${isMovie ? item.title : item.name} thumbnail`}
+        <Image
+          src={`${
+            item.backdrop_path
+              ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
+              : `https://image.tmdb.org/t/p/original${item.poster_path}`
+          } `}
+          alt={`${item.title ? item.title : item.name ? item.name : ""}`}
+          width={1653}
+          height={929}
           className="w-full h-full rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
+          placeholder="blur"
+          blurDataURL={`${toBase64(shimmer(240, 140))}`}
+          unoptimized
         />
         <span
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
           onClick={() => {
-            handleBookmarkClick(item);
+            isMovie
+              ? handleMoviesBookmarkClick(item)
+              : handleTvsBookmarkClick(item);
           }}
         >
-          <BookmarkButton item={item} favorited={favorited} />
+          {isMovie ? (
+            <BookmarkButton item={item} favorited={favoritedMovies} />
+          ) : (
+            <BookmarkButton item={item} favorited={favoritedTvs} />
+          )}
         </span>
 
         <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">

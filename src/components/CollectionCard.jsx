@@ -7,7 +7,7 @@ import BookmarkButton from "./BookmarkButton";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 import { shimmer, toBase64 } from "@/utils";
 
-const Card = ({ item, isMovie }) => {
+const CollectionCard = ({ item, isMovie }) => {
   const {
     favoritedMovies,
     handleMoviesBookmarkClick,
@@ -98,4 +98,4 @@ const Card = ({ item, isMovie }) => {
   );
 };
 
-export default Card;
+export default CollectionCard;

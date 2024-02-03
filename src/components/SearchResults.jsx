@@ -1,6 +1,6 @@
 "use client";
 import PaginationComponent from "./Pagination";
-import Card from "./Card";
+import CollectionCard from "./CollectionCard";
 
 const SearchResults = ({
   filteredData,
@@ -24,7 +24,7 @@ const SearchResults = ({
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
         {filteredData.results.map((item) => (
-          <Card key={item.id} item={item} isMovie={isMovie} />
+          <CollectionCard key={item.id} item={item} isMovie={isMovie} />
         ))}
       </div>
 

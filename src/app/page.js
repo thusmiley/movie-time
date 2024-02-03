@@ -53,6 +53,7 @@ export default function Home() {
               isMovie={true}
               title="Recommended movies for you"
               page={page}
+              limit={20}
               list="upcoming"
               mediaType="movie"
             />
@@ -71,6 +72,7 @@ export default function Home() {
               isMovie={false}
               title="Recommended TV series for you"
               page={page}
+              limit={20}
               list="on_the_air"
               mediaType="tv"
             />
