@@ -1,34 +1,48 @@
 "use client";
 import Search from "@/components/Search";
-import data from "../../utils/data";
-import MovieCard from "@/components/MovieCard";
-import { useState, useEffect } from "react";
+import "dotenv/config";
+import { options } from "@/utils";
+import Card from "@/components/Card";
+import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
+import Recommended from "@/components/Recommended";
 
 const TvSeries = () => {
+  const [showMovies, setShowMovies] = useState(true);
   const [searchInput, setSearchInput] = useState("");
-
-  const filterTvseries = data.filter((movie) => {
-    if (searchInput === "") {
-      return movie;
-    } else {
-      return movie.title.toLowerCase().includes(searchInput);
-    }
-  });
+  const [filteredData, setFilteredData] = useState();
+    const [page, setPage] = useState(1);
+    
+     useEffect(() => {
+       fetch(
+         `https://api.themoviedb.org/3/search/tv?query=${searchInput}&include_adult=false&language=en-US&page=${page}`,
+         options
+       )
+         .then((response) => response.json())
+         .then((response) => {
+           setFilteredData(response);
+         })
+         .catch((err) => console.error(err));
+     }, [searchInput, page]);
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search category={"Search for TV series"} setSearchInput={setSearchInput} />
+      <Search
+        category={"Search for TV series"}
+        setSearchInput={setSearchInput}
+      />
       {searchInput === "" ? (
-          <section className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
+        <div>
+          <div className="px-4 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px]">
             <h2 className="cat-heading font-light">TV Series</h2>
-
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
-              {data.map((movie, index) => movie.category === "TV Series" && <MovieCard key={index} movie={movie} />)}
-            </div>
-          </section>
+          </div>
+          <Recommended />
+        </div>
       ) : (
-        <SearchResults filteredData={filterTvseries} searchInput={searchInput} />
+        <SearchResults
+          filteredData={filterTvseries}
+          searchInput={searchInput}
+        />
       )}
     </main>
   );

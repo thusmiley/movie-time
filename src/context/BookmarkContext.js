@@ -8,27 +8,66 @@ export function useBookmarkContext() {
 }
 
 export function BookmarkProvider({ children }) {
-  const [favorited, setFavorited] = useState(() => {
-    if (typeof window !== "undefined" && localStorage.getItem("bookmarked") !== null) {
-      return JSON.parse(localStorage.getItem("bookmarked"));
+  const [favoritedMovies, setFavoritedMovies] = useState(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("bookmarkedMovies") !== null
+    ) {
+      return JSON.parse(localStorage.getItem("bookmarkedMovies"));
     } else {
       return [];
     }
   });
 
-  const handleBookmarkClick = (movie) => {
-    if (!favorited?.includes(movie)) {
-      const updatedBookmark = [...favorited, movie];
-      setFavorited(updatedBookmark);
-      localStorage.setItem("bookmarked", JSON.stringify(updatedBookmark));
+  const [favoritedTvs, setFavoritedTvs] = useState(() => {
+    if (
+      typeof window !== "undefined" &&
+      localStorage.getItem("bookmarkedTvs") !== null
+    ) {
+      return JSON.parse(localStorage.getItem("bookmarkedTvs"));
     } else {
-      const updatedBookmark = favorited?.filter((item) => item.title !== movie.title);
-      setFavorited(updatedBookmark);
-      localStorage.setItem("bookmarked", JSON.stringify(updatedBookmark));
+      return [];
+    }
+  });
+
+  const handleMoviesBookmarkClick = (item) => {
+    if (!favoritedMovies?.includes(item)) {
+      const updatedBookmark = [...favoritedMovies, item];
+      setFavoritedMovies(updatedBookmark);
+      localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmark));
+    } else {
+      const updatedBookmark = favoritedMovies?.filter(
+        (obj) => obj.title !== item.title || obj.name !== item.name
+      );
+      setFavoritedMovies(updatedBookmark);
+      localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmark));
     }
   };
 
-  const contextValue = { favorited, handleBookmarkClick };
+  const handleTvsBookmarkClick = (item) => {
+    if (!favoritedTvs?.includes(item)) {
+      const updatedBookmark = [...favoritedTvs, item];
+      setFavoritedTvs(updatedBookmark);
+      localStorage.setItem("bookmarkedTvs", JSON.stringify(updatedBookmark));
+    } else {
+      const updatedBookmark = favoritedTvs?.filter(
+        (obj) => obj.title !== item.title || obj.name !== item.name
+      );
+      setFavoritedTvs(updatedBookmark);
+      localStorage.setItem("bookmarkedTvs", JSON.stringify(updatedBookmark));
+    }
+  };
 
-  return <BookmarkContext.Provider value={contextValue}>{children}</BookmarkContext.Provider>;
+  const contextValue = {
+    favoritedMovies,
+    handleMoviesBookmarkClick,
+    favoritedTvs,
+    handleTvsBookmarkClick
+  };
+
+  return (
+    <BookmarkContext.Provider value={contextValue}>
+      {children}
+    </BookmarkContext.Provider>
+  );
 }

@@ -5,7 +5,7 @@ import "swiper/css";
 import TrendingCard from "./TrendingCard";
 import { useState, useEffect } from "react";
 import "dotenv/config";
-import { options } from "@/utils/api";
+import { options } from "@/utils";
 
 const Trending = ({ showMovies, setShowMovies }) => {
   const [data, setData] = useState();
@@ -36,19 +36,19 @@ const Trending = ({ showMovies, setShowMovies }) => {
     <section className="pl-4 mt-2 relative z-0 overflow-hidden md:pl-[25px] xl:ml-[164px] xl:pl-0">
       <h2 className="cat-heading font-light flex items-center">
         Trending
-        <span className="text-[11px] font-normal flex text-white/75 items-center ml-4 md:ml-6 md:text-[13px] divide-x-[1px] divide-white/50 shadow-lg border-[1px] border-white/50 rounded-[8px] overflow-hidden ">
+        <span className="text-[10px] font-normal flex text-white/75 items-center ml-4  divide-x-[2px] divide-white/50 shadow-lg border-[2px] border-white/50 rounded-md overflow-hidden md:ml-6">
           <button
             className={`${
               showMovies ? "bg-[#e0e0e014] text-green-600" : "bg-transparent"
-            } py-1 cursor-pointer w-16 transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
+            } py-[1px] px-2 cursor-pointer transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
             onClick={() => setShowMovies(true)}
           >
-            Movies
+            Movie
           </button>
           <button
             className={`${
               !showMovies ? "bg-[#e0e0e014] text-green-600" : "bg-transparent"
-            } py-1 cursor-pointer w-16 transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
+            } py-[1px] px-2 cursor-pointer transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
             onClick={() => setShowMovies(false)}
           >
             TV Series

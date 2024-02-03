@@ -1,23 +1,16 @@
 "use client";
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import bookmarkEmpty from "../../public/images/icon-bookmark-empty.svg";
-import bookmarkFull from "../../public/images/icon-bookmark-full.svg";
 
 const BookmarkButton = ({ item, favorited }) => {
-  const [checkBookmark, setCheckBookmark] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
-    setCheckBookmark(() =>
-      favorited.filter((card) => card?.title === item.title).length !== 0
-        ? true
-        : false
-    );
+    setIsBookmarked(favorited?.includes(item));
   }, [item, favorited]);
 
   return (
     <div>
-      {checkBookmark ? (
+      {isBookmarked ? (
         <svg
           width="12"
           height="14"

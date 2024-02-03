@@ -30,8 +30,12 @@ const TrendingCard = ({ item, showMovies }) => {
           <div className="text-[12px] font-light text-white/75 flex items-center space-x-2 md:text-[15px]">
             <p>
               {showMovies
-                ? item.release_date?.slice(0, 4)
-                : item.first_air_date?.slice(0, 4)}
+                ? item.release_date
+                  ? item.release_date?.slice(0, 4)
+                  : "NA"
+                : item.first_air_date
+                ? item.first_air_date?.slice(0, 4)
+                : "NA"}
             </p>
             <span>•</span>
             <div className="flex items-center space-x-[6px]">

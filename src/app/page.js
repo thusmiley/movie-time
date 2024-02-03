@@ -4,18 +4,19 @@ import Search from "@/components/Search";
 import Trending from "@/components/Trending";
 import { useState, useEffect, useContext } from "react";
 import "dotenv/config";
-import { options } from "@/utils/api";
+import { options } from "@/utils";
 import SearchResults from "@/components/SearchResults";
 
 export default function Home() {
   const [showMovies, setShowMovies] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState();
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     showMovies
       ? fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${searchInput}include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/movie?query=${searchInput}&include_adult=false&language=en-US&page=${page}`,
           options
         )
           .then((response) => response.json())
@@ -24,7 +25,7 @@ export default function Home() {
           })
           .catch((err) => console.error(err))
       : fetch(
-          `https://api.themoviedb.org/3/search/tv?query=${searchInput}include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/tv?query=${searchInput}&include_adult=false&language=en-US&page=${page}`,
           options
         )
           .then((response) => response.json())
@@ -32,7 +33,7 @@ export default function Home() {
             setFilteredData(response);
           })
           .catch((err) => console.error(err));
-  }, [searchInput]);
+  }, [searchInput, page]);
 
   return (
     <main className="min-h-screen mb-[60px]">
@@ -44,8 +45,6 @@ export default function Home() {
         showMovies ? (
           <div>
             <Trending
-              //   tag="Movie"
-              //   mediaType="movie"
               showMovies={showMovies}
               setShowMovies={setShowMovies}
             />
@@ -54,8 +53,6 @@ export default function Home() {
         ) : (
           <div>
             <Trending
-              //   tag="TV Series"
-              //   mediaType="tv"
               showMovies={showMovies}
               setShowMovies={setShowMovies}
             />
@@ -63,7 +60,14 @@ export default function Home() {
           </div>
         )
       ) : (
-        <SearchResults filteredData={filteredData} searchInput={searchInput} />
+        <SearchResults
+          filteredData={filteredData}
+          searchInput={searchInput}
+          showMovies={showMovies}
+          totalPages={filteredData.total_pages}
+          page={page}
+          setPage={setPage}
+        />
       )}
     </main>
   );

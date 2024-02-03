@@ -6,41 +6,82 @@ import playIcon from "../../public/images/icon-play.svg";
 import "dotenv/config";
 import ReactPlayer from "react-player/lazy";
 import Modal from "react-modal";
-import { options } from "@/utils/api";
+import { options } from "@/utils";
 
 const PlayButton = ({ videoId, showMovies }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [videoKey, setVideoKey] = useState();
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setVideoKey(
-          response.results.filter((obj) => obj.type === "Trailer")[0]?.key
-        );
-      })
-      .catch((err) => console.error(err));
-  }, [showMovies, videoKey]);
+    showMovies
+      ? fetch(
+          `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`,
+          options
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            response?.results?.length !== 0
+              ? response?.results?.map((obj) => {
+                  if (obj.type === "Trailer") {
+                    setVideoKey(obj.key);
+                    return;
+                  } else if (obj.type) {
+                    setVideoKey(obj.key);
+                    return;
+                  } else {
+                    setVideoKey("");
+                    return;
+                  }
+                })
+              : setVideoKey("");
+          })
+          .catch((err) => console.error(err))
+      : fetch(
+          `https://api.themoviedb.org/3/tv/${videoId}/videos?language=en-US`,
+          options
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            response?.results?.length !== 0
+              ? response?.results?.map((obj) => {
+                  if (obj.type === "Trailer") {
+                    setVideoKey(obj.key);
+                    return;
+                  } else if (obj.type) {
+                    setVideoKey(obj.key);
+                    return;
+                  } else {
+                    setVideoKey("");
+                    return;
+                  }
+                })
+              : setVideoKey("");
+          })
+          .catch((err) => console.error(err));
+  }, [showMovies, videoId]);
 
   return (
     <div>
-      <div
-        className="flex items-center p-[9px] bg-white/25 rounded-full w-[117px]"
-        onClick={() => setIsOpen(!modalIsOpen)}
-      >
-        <Image
-          src={playIcon}
-          alt="play"
-          width={30}
-          height={30}
-          className="w-[30px] h-auto object-contain"
-        />
-        <p className="ml-[19px] text-[18px] font-medium">Play</p>
-      </div>
+      {videoKey === "" ? (
+        <p className="p-[9px] bg-black/35 rounded-full w-[150px] text-center cursor-default">
+          No videos found
+        </p>
+      ) : (
+        <div
+          className="flex items-center p-[9px] bg-white/25 rounded-full w-[117px] cursor-pointer"
+          onClick={() => setIsOpen(!modalIsOpen)}
+        >
+          <Image
+            src={playIcon}
+            alt="play"
+            width={30}
+            height={30}
+            className="w-[30px] h-auto object-contain"
+          />
+          <p className="ml-[19px] text-[18px] font-medium">Play</p>
+        </div>
+      )}
+
       <Modal
         isOpen={modalIsOpen}
         className={`${

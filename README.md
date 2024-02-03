@@ -31,3 +31,4 @@ Serial Chiller Website
 - Nextjs Router
 - Search
 - Local Storage
+- API: https://api.themoviedb.org/3/
