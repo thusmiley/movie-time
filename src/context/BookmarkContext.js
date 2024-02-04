@@ -21,7 +21,7 @@ export function BookmarkProvider({ children }) {
   };
 
   const [favoritedMovies, setFavoritedMovies] = useState(() => {
-    localStorage.clear();
+    // localStorage.clear();
     if (
       typeof window !== "undefined" &&
       localStorage.getItem("bookmarkedMovies") !== null
