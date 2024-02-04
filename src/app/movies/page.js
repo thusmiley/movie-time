@@ -28,7 +28,7 @@ const Movies = () => {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search category={"Search for movies"} setSearchInput={setSearchInput} />
+      <Search isMovie={isMovie} setSearchInput={setSearchInput} />
       {searchInput === "" ? (
         <div>
           <HeroSlider

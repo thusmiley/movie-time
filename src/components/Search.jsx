@@ -3,7 +3,7 @@ import Image from "next/image";
 import searchIcon from "../../public/images/icon-search.svg";
 import { useState, useEffect } from "react";
 
-const Search = ({ mediaType, setSearchInput }) => {
+const Search = ({ isMovie, setSearchInput }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSearchInput(e.target.search.value);
@@ -22,7 +22,7 @@ const Search = ({ mediaType, setSearchInput }) => {
       <input
         type="search"
         name="search"
-        placeholder={`Search ${mediaType === "movie" ? "movies" : "TV series"}`}
+        placeholder={`Search ${isMovie ? "movies" : "TV series"}`}
         className="w-full py-2 ml-4 bg-almostBlack focus:border-b-grey border-b-[1px] border-transparent outline-none caret-red text-[16px] placeholder:text-white/50 font-light md:text-[24px] md:ml-6"
       />
     </form>

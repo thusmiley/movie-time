@@ -99,10 +99,12 @@ const PlayButton = ({ videoId, isMovie }) => {
             onClick={() => setIsOpen(false)}
           />
         </div>
-        <div className="w-auto h-auto">
+        <div className="w-[80%] h-auto">
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${videoKey}`}
-            controls={true}
+                      controls={true}
+                      light={true}
+                      width='80vw'
             className="overflow-hidden bg-black/80"
           />
         </div>

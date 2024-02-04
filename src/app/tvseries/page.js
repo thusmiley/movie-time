@@ -11,7 +11,7 @@ const TvSeries = () => {
   const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState();
   const [page, setPage] = useState(1);
-  const [isMovie, setIsMovie] = useState(true);
+  const [isMovie, setIsMovie] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -27,10 +27,7 @@ const TvSeries = () => {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search
-        category={"Search for TV series"}
-        setSearchInput={setSearchInput}
-      />
+      <Search isMovie={isMovie} setSearchInput={setSearchInput} />
       {searchInput === "" ? (
         <div>
           <HeroSlider

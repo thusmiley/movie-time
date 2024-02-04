@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search setSearchInput={setSearchInput} />
+          <Search setSearchInput={setSearchInput} isMovie={ isMovie} />
       {searchInput === "" ? (
         isMovie ? (
           <div>
