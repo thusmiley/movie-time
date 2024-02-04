@@ -57,6 +57,7 @@ export default function Home() {
               limit={20}
               list="upcoming"
               mediaType="movie"
+              href="/movies"
             />
           </div>
         ) : (
@@ -76,6 +77,7 @@ export default function Home() {
               limit={20}
               list="on_the_air"
               mediaType="tv"
+              href="/tvs"
             />
           </div>
         )

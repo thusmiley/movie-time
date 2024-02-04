@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 const BookmarkButton = ({ item, favorited }) => {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(favorited?.includes(item));
 
   useEffect(() => {
     setIsBookmarked(favorited?.includes(item));

@@ -8,6 +8,10 @@ import CollectionCard from "@/components/CollectionCard";
 const Bookmarked = () => {
   const { favoritedMovies, favoritedTvs } = useBookmarkContext();
 
+  useEffect(() => {
+    console.log(favoritedTvs);
+  }, [favoritedMovies, favoritedTvs]);
+
   return (
     <main className="min-h-screen mb-[60px]">
       <div>

@@ -45,6 +45,7 @@ const TvSeries = () => {
             title="Airing Today"
             list="airing_today"
             mediaType="tv"
+            href="/tvseries/airing_today"
           />
           <Collection
             isMovie={false}
@@ -52,6 +53,7 @@ const TvSeries = () => {
             title="Top Rated"
             list="top_rated"
             mediaType="tv"
+            href="/tvseries/top_rated"
           />
           <Collection
             isMovie={false}
@@ -59,6 +61,7 @@ const TvSeries = () => {
             title="Popular"
             list="popular"
             mediaType="tv"
+            href="/tvseries/popular"
           />
           <Collection
             isMovie={false}
@@ -66,6 +69,7 @@ const TvSeries = () => {
             title="On The Air"
             list="on_the_air"
             mediaType="tv"
+            href="/tvseries/on_the_air"
           />
         </div>
       ) : (

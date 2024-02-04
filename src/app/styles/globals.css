@@ -25,11 +25,11 @@
     width: 100%;
   }
   .cat-heading {
-    @apply text-[20px] tracking-[-.31px] font-light mb-6;
+    @apply text-[20px] tracking-[-.31px] font-light;
   }
   @screen md {
     .cat-heading {
-      @apply text-[32px] mb-[25px];
+      @apply text-[32px];
     }
   }
 }

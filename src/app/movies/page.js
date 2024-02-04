@@ -46,6 +46,7 @@ const Movies = () => {
             title="Now Playing"
             list="now_playing"
             mediaType="movie"
+            href="/movies/now_playing"
           />
           <Collection
             limit={10}
@@ -53,13 +54,15 @@ const Movies = () => {
             title="Popular"
             list="popular"
             mediaType="movie"
-          />
+            href="/movies/popular"
+          />{" "}
           <Collection
             limit={10}
             isMovie={true}
             title="Top Rated"
             list="top_rated"
             mediaType="movie"
+            href="/movies/top_rated"
           />
         </div>
       ) : (
