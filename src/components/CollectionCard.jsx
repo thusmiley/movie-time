@@ -18,20 +18,22 @@ const CollectionCard = ({ item, isMovie }) => {
   return (
     <div>
       <div className="w-full relative group cursor-pointer overflow-hidden rounded-[8px]">
-        <div className="shimmer-bg relative h-[110px] md:h-[150px] lg:h-[170px] xl:h-[200px] 2xl:h-[250px]">
+        <div className="relative h-[110px] md:h-[150px] lg:h-[170px] xl:h-[200px] 2xl:h-[250px]">
           <Image
             src={`${
               item.backdrop_path
                 ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
-                : `https://image.tmdb.org/t/p/original${item.poster_path}`
+                : item.poster_path
+                ? `https://image.tmdb.org/t/p/original${item.poster_path}`
+                : "/images/image-error.png"
             } `}
             alt={`${item.title ? item.title : item.name ? item.name : ""}`}
             width={1653}
             height={929}
             className="w-full h-[110px] rounded-[8px] object-cover object-center hover:scale-105 transition-all duration-200 ease-in md:h-[150px] lg:h-[170px] xl:h-[200px] 2xl:h-[250px]"
-            placeholder="blur"
-            blurDataURL={`${toBase64(shimmer(240, 140))}`}
-            unoptimized
+            // placeholder="blur"
+            // blurDataURL={`${toBase64(shimmer(240, 140))}`}
+            // unoptimized
           />
         </div>
 

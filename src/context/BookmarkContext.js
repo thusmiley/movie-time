@@ -8,8 +8,20 @@ export function useBookmarkContext() {
 }
 
 export function BookmarkProvider({ children }) {
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.search.value);
+    e.target.search.value = "";
+  };
+
+  const resetSearch = () => {
+    setSearchInput("");
+  };
+
   const [favoritedMovies, setFavoritedMovies] = useState(() => {
-    // localStorage.clear();
+    localStorage.clear();
     if (
       typeof window !== "undefined" &&
       localStorage.getItem("bookmarkedMovies") !== null
@@ -64,6 +76,10 @@ export function BookmarkProvider({ children }) {
     handleMoviesBookmarkClick,
     favoritedTvs,
     handleTvsBookmarkClick,
+    searchInput,
+    setSearchInput,
+    handleSearch,
+    resetSearch,
   };
 
   return (

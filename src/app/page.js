@@ -6,12 +6,13 @@ import { useState, useEffect, useContext } from "react";
 import "dotenv/config";
 import { options } from "@/utils";
 import SearchResults from "@/components/SearchResults";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
 export default function Home() {
-  const [searchInput, setSearchInput] = useState("");
   const [filteredData, setFilteredData] = useState();
   const [page, setPage] = useState(1);
   const [isMovie, setIsMovie] = useState(true);
+  const { searchInput } = useBookmarkContext();
 
   useEffect(() => {
     isMovie
@@ -37,7 +38,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen mb-[60px]">
-          <Search setSearchInput={setSearchInput} isMovie={ isMovie} />
+      <Search isMovie={isMovie} />
       {searchInput === "" ? (
         isMovie ? (
           <div>
@@ -81,7 +82,6 @@ export default function Home() {
       ) : (
         <SearchResults
           filteredData={filteredData}
-          searchInput={searchInput}
           isMovie={isMovie}
           totalPages={filteredData.total_pages}
           page={page}

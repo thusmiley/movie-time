@@ -1,15 +1,17 @@
 "use client";
 import PaginationComponent from "./Pagination";
 import CollectionCard from "./CollectionCard";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const SearchResults = ({
   filteredData,
-  searchInput,
   isMovie,
   page,
   totalPages,
   setPage,
 }) => {
+  const { searchInput } = useBookmarkContext();
+
   return (
     <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
       <h2 className="cat-heading font-light">

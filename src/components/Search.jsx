@@ -2,17 +2,15 @@
 import Image from "next/image";
 import searchIcon from "../../public/images/icon-search.svg";
 import { useState, useEffect } from "react";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
-const Search = ({ isMovie, setSearchInput }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.search.value);
-  };
+const Search = ({ isMovie }) => {
+  const {  handleSearch } = useBookmarkContext();
 
   return (
     <form
       className="flex items-center my-4 px-4 mx-auto md:px-[25px] md:my-[25px] xl:ml-[164px] xl:pt-[50px] xl:mt-0 xl:pl-0 xl:pr-[36px]"
-      onSubmit={handleSubmit}
+      onSubmit={handleSearch}
     >
       <Image
         src={searchIcon}

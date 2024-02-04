@@ -7,9 +7,10 @@ import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
 import Collection from "@/components/Collection";
 import HeroSlider from "@/components/HeroSlider";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const Movies = () => {
-  const [searchInput, setSearchInput] = useState("");
+  const { searchInput } = useBookmarkContext();
   const [filteredData, setFilteredData] = useState();
   const [page, setPage] = useState(1);
   const [isMovie, setIsMovie] = useState(true);
@@ -28,7 +29,7 @@ const Movies = () => {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search isMovie={isMovie} setSearchInput={setSearchInput} />
+      <Search isMovie={isMovie} />
       {searchInput === "" ? (
         <div>
           <HeroSlider
@@ -64,9 +65,8 @@ const Movies = () => {
       ) : (
         <SearchResults
           filteredData={filteredData}
-          searchInput={searchInput}
           isMovie={true}
-          totalPages={filteredData.total_pages}
+          totalPages={filteredData?.total_pages}
           page={page}
           setPage={setPage}
         />

@@ -86,26 +86,24 @@ const PlayButton = ({ videoId, isMovie }) => {
         isOpen={modalIsOpen}
         className={`${
           modalIsOpen ? "relative" : "hidden"
-        } top-0 bottom-0 left-0 right-0 bg-black/70 w-full h-full grid place-content-center `}
+        } bg-black/70 w-full h-full grid place-content-center`}
         ariaHideApp={false}
       >
-        <div>
+        <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[80vw] h-[45vw] lg:w-[50vw] lg:h-[28vw] xl:w-[30vw] xl:h-[17vw]">
           <Image
             src={closeIcon}
             alt="close"
             width={18}
             height={17}
-            className="w-[18px] h-auto object-contain mb-5 float-right cursor-pointer hover:scale-105"
+            className="w-[18px] h-auto object-contain cursor-pointer hover:scale-105 absolute -top-10 right-0"
             onClick={() => setIsOpen(false)}
           />
-        </div>
-        <div className="w-[80%] h-auto">
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${videoKey}`}
-                      controls={true}
-                      light={true}
-                      width='80vw'
-            className="overflow-hidden bg-black/80"
+            controls={true}
+            light={true}
+            width="100%"
+            height="100%"
           />
         </div>
       </Modal>

@@ -4,16 +4,18 @@ import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import logo from "../../public/images/logo.svg";
 import avatar from "../../public/images/image-avatar.png";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const NavBar = () => {
   const pathname = usePathname();
+  const { resetSearch } = useBookmarkContext();
 
   return (
     <header className="xl:h-screen xl:fixed xl:pb-[64px]">
       <div className="bg-navy md:mx-[25px] md:rounded-[10px] md:mt-6 xl:mt-8 xl:ml-8 xl:h-full">
         <nav className="p-4 flex justify-between items-center md:p-5 xl:flex-col xl:items-stretch xl:h-full xl:p-8">
           {/* logo */}
-          <Link href="/" title="HOME" >
+          <Link href="/" title="HOME" onClick={resetSearch}>
             <Image
               src={logo}
               alt="movie time logo"
@@ -27,6 +29,7 @@ const NavBar = () => {
               href="/"
               className={pathname == "/" ? "menu-active" : ""}
               title="HOME"
+              onClick={resetSearch}
             >
               <svg
                 width="20"
@@ -47,6 +50,7 @@ const NavBar = () => {
               href="/movies"
               className={pathname == "/movies" ? "menu-active" : ""}
               title="MOVIES"
+              onClick={resetSearch}
             >
               <svg
                 width="20"
@@ -67,6 +71,7 @@ const NavBar = () => {
               href="/tvseries"
               className={pathname == "/tvseries" ? "menu-active" : ""}
               title="TV SERIES"
+              onClick={resetSearch}
             >
               <svg
                 width="20"
@@ -87,6 +92,7 @@ const NavBar = () => {
               href="/bookmarked"
               className={pathname == "/bookmarked" ? "menu-active" : ""}
               title="BOOKMARKED"
+              onClick={resetSearch}
             >
               <svg
                 width="17"
