@@ -38,7 +38,7 @@ const PlayButton = ({ videoId, mediaType }) => {
   }, [mediaType, videoId]);
 
   return (
-    <div>
+    <div className="relative">
       {videoKey === "" ? (
         <p className="p-[9px] bg-black/35 rounded-full w-[150px] text-center cursor-default">
           No videos found
@@ -63,16 +63,16 @@ const PlayButton = ({ videoId, mediaType }) => {
         isOpen={modalIsOpen}
         className={`${
           modalIsOpen ? "relative" : "hidden"
-        } bg-black/70 w-full h-full grid place-content-center`}
+        } bg-black/70 w-full h-full grid place-content-center z-50`}
         ariaHideApp={false}
       >
-        <div className="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[80vw] h-[45vw] lg:w-[50vw] lg:h-[28vw] xl:w-[30vw] xl:h-[17vw]">
+        <div className="absolute z-50 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] w-[80vw] h-[45vw] lg:w-[50vw] lg:h-[28vw] xl:w-[30vw] xl:h-[17vw]">
           <Image
             src={closeIcon}
             alt="close"
             width={18}
             height={17}
-            className="w-[18px] h-auto object-contain cursor-pointer hover:scale-105 absolute -top-10 right-0"
+            className="w-[18px] h-auto object-contain cursor-pointer hover:scale-105 absolute -top-10 z-50 right-0"
             onClick={() => setIsOpen(false)}
           />
           <ReactPlayer

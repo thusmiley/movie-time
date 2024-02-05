@@ -17,7 +17,7 @@ const CollectionCard = ({ item, mediaType }) => {
 
   return (
     <div>
-      <div className="w-full relative group cursor-pointer overflow-hidden rounded-[8px]">
+      <div className="w-full relative group cursor-pointer overflow-hidden rounded-[8px] z-0">
         <div className="relative h-[110px] md:h-[150px] xl:h-[200px] 2xl:h-[250px]">
           <Image
             src={`${

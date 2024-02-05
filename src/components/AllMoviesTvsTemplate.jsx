@@ -40,17 +40,19 @@ const AllMoviesTvsTemplate = ({ mediaType }) => {
     <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
       <div className="relative">
         <h2 className="cat-heading font-light">
-          {mediaType === "movie" ? "All Movies" : "All TV Series"} (
-          {data?.total_results.toLocaleString()} results)
+          {mediaType === "movie" ? "All Movies" : "All TV Series"}{" "}
+          <span className="hidden md:inline">
+            ({data?.total_results.toLocaleString()} results)
+          </span>
         </h2>
         <Listbox
           value={selectedOption}
           onChange={setSelectedOption}
           as={Fragment}
         >
-          <div className="absolute top-0 right-0 z-10 font-light md:top-2">
+          <div className="absolute z-10 top-0 md:top-2 right-0 font-light outline-none rounded-md">
             <Listbox.Button as={Fragment}>
-              <button className="bg-red font-bold text-almostBlack cursor-pointer py-[2px] pl-4 pr-3 rounded-md flex justify-between items-center w-[170px]">
+              <button className="bg-red font-bold text-almostBlack cursor-pointer py-[2px] pl-4 pr-3 rounded-md flex justify-between items-center md:w-[170px]">
                 {selectedOption.name}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +104,7 @@ const AllMoviesTvsTemplate = ({ mediaType }) => {
         </Listbox>
       </div>
 
-      <div className="mt-6 grid grid-cols-2 gap-4 row-span-1 md:mb-[25px] md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
+      <div className="relative mt-6 grid grid-cols-2 gap-4 row-span-1 md:mb-[25px] md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
         {data?.results?.map((item, index) => (
           <CollectionCard key={index} item={item} mediaType={mediaType} />
         ))}
