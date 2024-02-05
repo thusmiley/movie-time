@@ -23,11 +23,9 @@ const TvSeries = () => {
     <main className="min-h-screen mb-[60px]">
       <Search mediaType='tv' />
       {searchInput === "" ? (
-        <div>
           <AllMoviesTvsTemplate
             mediaType="tv"
           />
-        </div>
       ) : (
         <SearchResults
           filteredData={filteredData}

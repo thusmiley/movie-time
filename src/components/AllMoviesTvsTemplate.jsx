@@ -48,7 +48,7 @@ const AllMoviesTvsTemplate = ({ mediaType }) => {
           onChange={setSelectedOption}
           as={Fragment}
         >
-          <div className="absolute top-2 right-0 z-10 font-light">
+          <div className="absolute top-0 right-0 z-10 font-light md:top-2">
             <Listbox.Button as={Fragment}>
               <button className="bg-red font-bold text-almostBlack cursor-pointer py-[2px] pl-4 pr-3 rounded-md flex justify-between items-center w-[170px]">
                 {selectedOption.name}
