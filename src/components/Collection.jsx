@@ -26,9 +26,9 @@ const Collection = ({ isMovie, title, page, list, mediaType, limit, href }) => {
         <h2 className="cat-heading font-light">{title}</h2>
         <Link
           href={href}
-          className="underline hover:text-red duration-200 ease-in-out "
+          className="hover:text-red duration-200 ease-in-out font-light"
         >
-          See all
+          See all &rarr;
         </Link>
       </div>
 

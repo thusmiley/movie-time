@@ -19,7 +19,7 @@ const NavBar = () => {
             <Image
               src={logo}
               alt="movie time logo"
-              className="w-8 h-auto object-contain object-center"
+              className="w-8 h-auto object-contain object-center cursor-pointer"
             />
           </Link>
 
@@ -35,7 +35,7 @@ const NavBar = () => {
                 width="20"
                 height="20"
                 alt="home"
-                className="object-contain w-5 h-auto object-center"
+                className="object-contain w-5 h-auto object-center cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -56,7 +56,7 @@ const NavBar = () => {
                 width="20"
                 height="20"
                 alt="movies"
-                className="object-contain object-center w-5 h-auto"
+                className="object-contain object-center w-5 h-auto cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -77,7 +77,7 @@ const NavBar = () => {
                 width="20"
                 height="20"
                 alt="tv series"
-                className="object-contain object-center w-5 h-auto"
+                className="object-contain object-center w-5 h-auto cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -98,7 +98,7 @@ const NavBar = () => {
                 width="17"
                 height="20"
                 alt="bookmarked"
-                className="object-cover object-center w-[17px] h-auto"
+                className="object-cover object-center w-[17px] h-auto cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

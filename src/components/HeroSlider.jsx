@@ -30,7 +30,7 @@ const HeroSlider = ({
 
   return (
     <section className="pl-4 mt-2 relative z-0 overflow-hidden md:pl-[25px] xl:ml-[164px] xl:pl-0">
-      <h2 className="cat-heading font-light flex items-center">
+      <h2 className="cat-heading font-light flex items-center mb-6 md:mb-[25px]">
         {title}
         {isHome && (
           <span className="text-[10px] font-normal flex text-white/75 items-center ml-4  divide-x-[2px] divide-white/50 shadow-lg border-[2px] border-white/50 rounded-md overflow-hidden md:ml-6">

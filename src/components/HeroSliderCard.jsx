@@ -31,6 +31,7 @@ const HeroSliderCard = ({ item, isMovie }) => {
           placeholder="blur"
           blurDataURL={`${toBase64(shimmer(240, 140))}`}
           unoptimized
+          loading="lazy"
         />
         <span
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
