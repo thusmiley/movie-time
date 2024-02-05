@@ -5,7 +5,7 @@ import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const SearchResults = ({
   filteredData,
-  isMovie,
+  mediaType,
   page,
   totalPages,
   setPage,
@@ -24,9 +24,9 @@ const SearchResults = ({
         for '<span>{searchInput}</span>'
       </h2>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
+      <div className="grid grid-cols-2 gap-4 mt-6 md:mt-[25px] md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
         {filteredData.results.map((item) => (
-          <CollectionCard key={item.id} item={item} isMovie={isMovie} />
+          <CollectionCard key={item.id} item={item} mediaType={mediaType} />
         ))}
       </div>
 

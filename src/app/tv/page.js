@@ -1,81 +1,66 @@
 "use client";
 import Search from "@/components/Search";
-import "dotenv/config";
-import { options } from "@/utils";
-import { useState, useEffect, useContext } from "react";
 import SearchResults from "@/components/SearchResults";
 import Collection from "@/components/Collection";
 import HeroSlider from "@/components/HeroSlider";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const TvSeries = () => {
-  const { searchInput } = useBookmarkContext();
-  const [filteredData, setFilteredData] = useState();
-  const [page, setPage] = useState(1);
-  const [isMovie, setIsMovie] = useState(false);
-
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/search/tv?query=${searchInput}&include_adult=false&language=en-US&page=${page}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setFilteredData(response);
-      })
-      .catch((err) => console.error(err));
-  }, [searchInput, page]);
+  const {
+    searchInput,
+    mediaType,
+    setMediaType,
+    filteredData,
+    setFilteredData,
+    page,
+    setPage,
+  } = useBookmarkContext();
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search isMovie={isMovie} />
+      <Search mediaType="tv" />
       {searchInput === "" ? (
         <div>
           <HeroSlider
-            isMovie={false}
-            setIsMovie={setIsMovie}
+            setMediaType={setMediaType}
             title="Trending TV Series"
             isHome={false}
             list="trending"
             mediaType="tv"
           />
           <Collection
-            isMovie={false}
             limit={10}
             title="Airing Today"
             list="airing_today"
             mediaType="tv"
-            href="/tvseries/airing_today"
+            href="/tv/airing_today"
           />
           <Collection
-            isMovie={false}
             limit={10}
             title="Top Rated"
             list="top_rated"
             mediaType="tv"
-            href="/tvseries/top_rated"
+            href="/tv/top_rated"
           />
           <Collection
-            isMovie={false}
             limit={10}
             title="Popular"
             list="popular"
             mediaType="tv"
-            href="/tvseries/popular"
+            href="/tv/popular"
           />
           <Collection
-            isMovie={false}
             limit={10}
             title="On The Air"
             list="on_the_air"
             mediaType="tv"
-            href="/tvseries/on_the_air"
+            href="/tv/on_the_air"
           />
         </div>
       ) : (
         <SearchResults
           filteredData={filteredData}
-          isMovie={false}
+          mediaType={mediaType}
           totalPages={filteredData?.total_pages}
           page={page}
           setPage={setPage}

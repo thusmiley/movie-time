@@ -4,8 +4,8 @@ import searchIcon from "../../public/images/icon-search.svg";
 import { useState, useEffect } from "react";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 
-const Search = ({ isMovie }) => {
-  const {  handleSearch } = useBookmarkContext();
+const Search = ({ mediaType }) => {
+  const { handleSearch } = useBookmarkContext();
 
   return (
     <form
@@ -20,7 +20,7 @@ const Search = ({ isMovie }) => {
       <input
         type="search"
         name="search"
-        placeholder={`Search ${isMovie ? "movies" : "TV series"}`}
+        placeholder={`Search ${mediaType === 'movie' ? "movies" : "TV series"}`}
         className="w-full py-2 ml-4 bg-almostBlack focus:border-b-grey border-b-[1px] border-transparent outline-none caret-red text-[16px] placeholder:text-white/50 font-light md:text-[24px] md:ml-6"
       />
     </form>

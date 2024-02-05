@@ -7,14 +7,7 @@ import "dotenv/config";
 import { options } from "@/utils";
 import HeroSliderCard from "./HeroSliderCard";
 
-const HeroSlider = ({
-  isMovie,
-  setIsMovie,
-  title,
-  isHome,
-  list,
-  mediaType,
-}) => {
+const HeroSlider = ({ mediaType, setMediaType, title, isHome, list }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -26,7 +19,7 @@ const HeroSlider = ({
       .then((response) => {
         setData(response);
       });
-  }, [isMovie]);
+  }, [mediaType]);
 
   return (
     <section className="pl-4 mt-2 relative z-0 overflow-hidden md:pl-[25px] xl:ml-[164px] xl:pl-0">
@@ -36,17 +29,21 @@ const HeroSlider = ({
           <span className="text-[10px] font-normal flex text-white/75 items-center ml-4  divide-x-[2px] divide-white/50 shadow-lg border-[2px] border-white/50 rounded-md overflow-hidden md:ml-6">
             <button
               className={`${
-                isMovie ? "bg-[#e0e0e014] text-green-600" : "bg-transparent"
+                mediaType === "movie"
+                  ? "bg-[#e0e0e014] text-green-600"
+                  : "bg-transparent"
               } py-[1px] px-2 cursor-pointer transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
-              onClick={() => setIsMovie(true)}
+              onClick={() => setMediaType("movie")}
             >
               Movie
             </button>
             <button
               className={`${
-                !isMovie ? "bg-[#e0e0e014] text-green-600" : "bg-transparent"
+                mediaType === "tv"
+                  ? "bg-[#e0e0e014] text-green-600"
+                  : "bg-transparent"
               } py-[1px] px-2 cursor-pointer transition-all duration-150 ease-in-out uppercase hover:bg-[#e0e0e014]`}
-              onClick={() => setIsMovie(false)}
+              onClick={() => setMediaType("tv")}
             >
               TV Series
             </button>
@@ -81,7 +78,7 @@ const HeroSlider = ({
             key={item.id}
             className="w-[240px] h-[140px] md:w-[470px] md:h-[230px]"
           >
-            <HeroSliderCard item={item} isMovie={isMovie} />
+            <HeroSliderCard item={item} mediaType={mediaType} />
           </SwiperSlide>
         ))}
       </Swiper>

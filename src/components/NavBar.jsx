@@ -8,14 +8,21 @@ import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const NavBar = () => {
   const pathname = usePathname();
-  const { resetSearch } = useBookmarkContext();
+  const { resetSearch, setMediaType } = useBookmarkContext();
 
   return (
     <header className="xl:h-screen xl:fixed xl:pb-[64px]">
       <div className="bg-navy md:mx-[25px] md:rounded-[10px] md:mt-6 xl:mt-8 xl:ml-8 xl:h-full">
         <nav className="p-4 flex justify-between items-center md:p-5 xl:flex-col xl:items-stretch xl:h-full xl:p-8">
           {/* logo */}
-          <Link href="/" title="HOME" onClick={resetSearch}>
+          <Link
+            href="/"
+            title="HOME"
+            onClick={() => {
+              resetSearch();
+              setMediaType("movie");
+            }}
+          >
             <Image
               src={logo}
               alt="movie time logo"
@@ -29,7 +36,10 @@ const NavBar = () => {
               href="/"
               className={pathname == "/" ? "menu-active" : ""}
               title="HOME"
-              onClick={resetSearch}
+              onClick={() => {
+                resetSearch();
+                setMediaType("movie");
+              }}
             >
               <svg
                 width="20"
@@ -47,10 +57,13 @@ const NavBar = () => {
             </Link>
             {/* movies  */}
             <Link
-              href="/movies"
-              className={pathname == "/movies" ? "menu-active" : ""}
+              href="/movie"
+              className={pathname == "/movie" ? "menu-active" : ""}
               title="MOVIES"
-              onClick={resetSearch}
+              onClick={() => {
+                resetSearch();
+                setMediaType("movie");
+              }}
             >
               <svg
                 width="20"
@@ -68,10 +81,13 @@ const NavBar = () => {
             </Link>
             {/* tv series  */}
             <Link
-              href="/tvseries"
-              className={pathname == "/tvseries" ? "menu-active" : ""}
+              href="/tv"
+              className={pathname == "/tv" ? "menu-active" : ""}
               title="TV SERIES"
-              onClick={resetSearch}
+              onClick={() => {
+                resetSearch();
+                setMediaType("tv");
+              }}
             >
               <svg
                 width="20"
@@ -92,7 +108,9 @@ const NavBar = () => {
               href="/bookmarked"
               className={pathname == "/bookmarked" ? "menu-active" : ""}
               title="BOOKMARKED"
-              onClick={resetSearch}
+              onClick={() => {
+                resetSearch();
+              }}
             >
               <svg
                 width="17"
@@ -114,7 +132,7 @@ const NavBar = () => {
           <Image
             src={avatar}
             alt="movie time logo"
-            className="w-8 h-auto object-contain object-center border-white border-[1px] rounded-full"
+            className="w-8 h-auto object-contain object-center rounded-full"
           />
         </nav>
       </div>

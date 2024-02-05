@@ -8,57 +8,34 @@ import ReactPlayer from "react-player/lazy";
 import Modal from "react-modal";
 import { options } from "@/utils";
 
-const PlayButton = ({ videoId, isMovie }) => {
+const PlayButton = ({ videoId, mediaType }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [videoKey, setVideoKey] = useState();
 
   useEffect(() => {
-    isMovie
-      ? fetch(
-          `https://api.themoviedb.org/3/movie/${videoId}/videos?language=en-US`,
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            response?.results?.length !== 0
-              ? response?.results?.map((obj) => {
-                  if (obj.type === "Trailer") {
-                    setVideoKey(obj.key);
-                    return;
-                  } else if (obj.type) {
-                    setVideoKey(obj.key);
-                    return;
-                  } else {
-                    setVideoKey("");
-                    return;
-                  }
-                })
-              : setVideoKey("");
-          })
-          .catch((err) => console.error(err))
-      : fetch(
-          `https://api.themoviedb.org/3/tv/${videoId}/videos?language=en-US`,
-          options
-        )
-          .then((response) => response.json())
-          .then((response) => {
-            response?.results?.length !== 0
-              ? response?.results?.map((obj) => {
-                  if (obj.type === "Trailer") {
-                    setVideoKey(obj.key);
-                    return;
-                  } else if (obj.type) {
-                    setVideoKey(obj.key);
-                    return;
-                  } else {
-                    setVideoKey("");
-                    return;
-                  }
-                })
-              : setVideoKey("");
-          })
-          .catch((err) => console.error(err));
-  }, [isMovie, videoId]);
+    fetch(
+      `https://api.themoviedb.org/3/${mediaType}/${videoId}/videos?language=en-US`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        response?.results?.length !== 0
+          ? response?.results?.map((obj) => {
+              if (obj.type === "Trailer") {
+                setVideoKey(obj.key);
+                return;
+              } else if (obj.type) {
+                setVideoKey(obj.key);
+                return;
+              } else {
+                setVideoKey("");
+                return;
+              }
+            })
+          : setVideoKey("");
+      })
+      .catch((err) => console.error(err));
+  }, [mediaType, videoId]);
 
   return (
     <div>

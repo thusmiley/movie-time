@@ -1,11 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
-import "dotenv/config";
-import { options } from "@/utils";
 import CollectionCard from "./CollectionCard";
 import Link from "next/link";
+import "dotenv/config";
+import { options } from "@/utils";
 
-const Collection = ({ isMovie, title, page, list, mediaType, limit, href }) => {
+const Collection = ({
+  mediaType,
+  title,
+  page,
+  list,
+  limit,
+  href,
+}) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -18,7 +25,7 @@ const Collection = ({ isMovie, title, page, list, mediaType, limit, href }) => {
         setData(response);
       })
       .catch((err) => console.error(err));
-  }, [isMovie]);
+  }, [mediaType]);
 
   return (
     <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
@@ -34,7 +41,7 @@ const Collection = ({ isMovie, title, page, list, mediaType, limit, href }) => {
 
       <div className="mt-6 grid grid-cols-2 gap-4 row-span-1 md:mb-[25px] md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
         {data?.results?.slice(0, limit).map((item, index) => (
-          <CollectionCard key={index} item={item} isMovie={isMovie} />
+          <CollectionCard key={index} item={item} mediaType={mediaType} />
         ))}
       </div>
     </section>
