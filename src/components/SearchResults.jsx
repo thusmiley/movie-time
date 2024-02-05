@@ -1,5 +1,5 @@
 "use client";
-import PaginationComponent from "./Pagination";
+import PaginationComponent from "./PaginationComponent";
 import CollectionCard from "./CollectionCard";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 

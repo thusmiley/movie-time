@@ -31,11 +31,28 @@ export default function Home() {
             />
             <Collection
               mediaType="movie"
-              title="Recommended movies for you"
-              page={page}
-              limit={20}
+              title="Now Playing"
+              limit={9}
+              list="now_playing"
+            />
+            <Collection
+              mediaType="movie"
+              title="Top Rated"
+              limit={9}
+              list="top_rated"
+            />
+
+            <Collection
+              mediaType="movie"
+              title="Popular"
+              limit={9}
+              list="popular"
+            />
+            <Collection
+              mediaType="movie"
+              title="Upcoming"
+              limit={9}
               list="upcoming"
-              href="/movie"
             />
           </div>
         ) : (
@@ -49,12 +66,27 @@ export default function Home() {
             />
             <Collection
               mediaType="tv"
-              setMediaType={setMediaType}
-              title="Recommended TV series for you"
-              page={page}
-              limit={20}
+              title="On The Air"
+              limit={9}
               list="on_the_air"
-              href="/tv"
+            />
+            <Collection
+              mediaType="tv"
+              title="Top Rated"
+              limit={9}
+              list="top_rated"
+            />
+            <Collection
+              mediaType="tv"
+              title="Airing Today"
+              limit={9}
+              list="airing_today"
+            />
+            <Collection
+              mediaType="tv"
+              title="Popular"
+              limit={9}
+              list="popular"
             />
           </div>
         )

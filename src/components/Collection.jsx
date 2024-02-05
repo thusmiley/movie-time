@@ -1,18 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import CollectionCard from "./CollectionCard";
-import Link from "next/link";
 import "dotenv/config";
 import { options } from "@/utils";
 
-const Collection = ({
-  mediaType,
-  title,
-  page,
-  list,
-  limit,
-  href,
-}) => {
+const Collection = ({ mediaType, title, list, limit }) => {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -29,15 +21,7 @@ const Collection = ({
 
   return (
     <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
-      <div className="flex justify-between items-center">
-        <h2 className="cat-heading font-light">{title}</h2>
-        <Link
-          href={href}
-          className="hover:text-red duration-200 ease-in-out font-light"
-        >
-          See all &rarr;
-        </Link>
-      </div>
+      <h2 className="cat-heading font-light">{title}</h2>
 
       <div className="mt-6 grid grid-cols-2 gap-4 row-span-1 md:mb-[25px] md:grid-cols-3 md:gap-x-[29px] md:gap-y-6 xl:grid-cols-4 xl:gap-x-[40px] xl:gap-y-8">
         {data?.results?.slice(0, limit).map((item, index) => (

@@ -4,6 +4,9 @@ import SearchResults from "@/components/SearchResults";
 import Collection from "@/components/Collection";
 import HeroSlider from "@/components/HeroSlider";
 import { useBookmarkContext } from "@/context/BookmarkContext";
+import AllMoviesTvsTemplate from "@/components/AllMoviesTvsTemplate";
+import { useState } from "react";
+import { Listbox } from "@headlessui/react";
 
 const TvSeries = () => {
   const {
@@ -18,49 +21,17 @@ const TvSeries = () => {
 
   return (
     <main className="min-h-screen mb-[60px]">
-      <Search mediaType="tv" />
+      <Search mediaType='tv' />
       {searchInput === "" ? (
         <div>
-          <HeroSlider
-            setMediaType={setMediaType}
-            title="Trending TV Series"
-            isHome={false}
-            list="trending"
+          <AllMoviesTvsTemplate
             mediaType="tv"
-          />
-          <Collection
-            limit={10}
-            title="Airing Today"
-            list="airing_today"
-            mediaType="tv"
-            href="/tv/airing_today"
-          />
-          <Collection
-            limit={10}
-            title="Top Rated"
-            list="top_rated"
-            mediaType="tv"
-            href="/tv/top_rated"
-          />
-          <Collection
-            limit={10}
-            title="Popular"
-            list="popular"
-            mediaType="tv"
-            href="/tv/popular"
-          />
-          <Collection
-            limit={10}
-            title="On The Air"
-            list="on_the_air"
-            mediaType="tv"
-            href="/tv/on_the_air"
           />
         </div>
       ) : (
         <SearchResults
           filteredData={filteredData}
-          mediaType={mediaType}
+          mediaType='tv'
           totalPages={filteredData?.total_pages}
           page={page}
           setPage={setPage}
