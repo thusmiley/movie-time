@@ -71,13 +71,13 @@ export function BookmarkProvider({ children }) {
   });
 
   const handleMoviesBookmarkClick = (item) => {
-    if (!favoritedMovies?.includes(item)) {
+    if (favoritedMovies?.filter((obj) => obj.id === item.id).length === 0) {
       const updatedBookmark = [...favoritedMovies, item];
       setFavoritedMovies(updatedBookmark);
       localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmark));
     } else {
       const updatedBookmark = favoritedMovies?.filter(
-        (obj) => obj.title !== item.title || obj.name !== item.name
+        (obj) => obj.id !== item.id
       );
       setFavoritedMovies(updatedBookmark);
       localStorage.setItem("bookmarkedMovies", JSON.stringify(updatedBookmark));
@@ -85,14 +85,12 @@ export function BookmarkProvider({ children }) {
   };
 
   const handleTvsBookmarkClick = (item) => {
-    if (!favoritedTvs?.includes(item)) {
+    if (favoritedTvs?.filter((obj) => obj.id === item.id).length === 0) {
       const updatedBookmark = [...favoritedTvs, item];
       setFavoritedTvs(updatedBookmark);
       localStorage.setItem("bookmarkedTvs", JSON.stringify(updatedBookmark));
     } else {
-      const updatedBookmark = favoritedTvs?.filter(
-        (obj) => obj.title !== item.title || obj.name !== item.name
-      );
+      const updatedBookmark = favoritedTvs?.filter((obj) => obj.id !== item.id);
       setFavoritedTvs(updatedBookmark);
       localStorage.setItem("bookmarkedTvs", JSON.stringify(updatedBookmark));
     }

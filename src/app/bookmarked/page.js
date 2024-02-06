@@ -23,7 +23,7 @@ const Bookmarked = () => {
 
   return (
     <main className="min-h-screen mb-[60px] xl:pt-[50px] xl:mt-0">
-      {favoritedMovies.length === 0 || favoritedTvs.length === 0 ? (
+      {favoritedMovies.length === 0 && favoritedTvs.length === 0 ? (
         <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-0">
           <h2 className="cat-heading font-light">
             Sorry, there are currently no bookmaked movies or TV series.

@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar";
 import "./styles/globals.css";
 import { BookmarkProvider } from "@/context/BookmarkContext";
 import Footer from "@/components/Footer";
+import { Next13NProgress, Link } from "nextjs13-progress";
 
 export const metadata = {
   title: "Serial Chiller",
@@ -29,7 +30,15 @@ export default function RootLayout({ children }) {
       <body>
         <BookmarkProvider>
           <NavBar />
-          {children}
+          <main>
+            {children}
+            <Next13NProgress
+              height="4px"
+              color="#FC4747"
+              options={{ showSpinner: false }}
+              showOnShallow
+            />
+          </main>
           <Footer />
         </BookmarkProvider>
       </body>

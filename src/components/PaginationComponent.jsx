@@ -12,12 +12,13 @@ const PaginationComponent = ({ totalPages, setPage, page }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+    const maxpage = totalPages > 500 ? "500" : totalPages;
 
   return (
     <div className="flex justify-center mt-10">
       <Stack spacing={2}>
         <Pagination
-          count={totalPages > 500 ? '500' : totalPages}
+          count={maxpage}
           renderItem={(item) => (
             <PaginationItem
               slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}

@@ -5,7 +5,9 @@ const BookmarkButton = ({ item, favorited }) => {
   const [isBookmarked, setIsBookmarked] = useState(favorited?.includes(item));
 
   useEffect(() => {
-    setIsBookmarked(favorited?.includes(item));
+    setIsBookmarked(
+      favorited?.filter((obj) => obj.id === item.id).length !== 0
+    );
   }, [item, favorited]);
 
   return (

@@ -5,6 +5,8 @@ import { useBookmarkContext } from "@/context/BookmarkContext";
 import AllMoviesTvsTemplate from "@/components/AllMoviesTvsTemplate";
 import { useState } from "react";
 import { Listbox } from "@headlessui/react";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
 
 const Movies = () => {
   const {
@@ -21,11 +23,16 @@ const Movies = () => {
     <main className="min-h-screen mb-[60px]">
       <Search mediaType={mediaType} />
       {searchInput === "" ? (
-        <div>
-          <AllMoviesTvsTemplate
-            mediaType="movie"
-          />
-        </div>
+        filteredData ? (
+          <AllMoviesTvsTemplate mediaType="movie" />
+        ) : (
+          <Stack spacing={1}>
+            <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton variant="rectangular" width={210} height={60} />
+            <Skeleton variant="rounded" width={210} height={60} />
+          </Stack>
+        )
       ) : (
         <SearchResults
           filteredData={filteredData}
