@@ -37,7 +37,7 @@ const AllMoviesTvsTemplate = ({ mediaType }) => {
   }, [mediaType, selectedOption, page]);
 
   return (
-    <section className="px-4 mt-6 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
+    <section className="px-4 mt-6 relative z-0 overflow-hidden md:px-[25px] xl:ml-[164px] xl:pl-0 xl:pr-[36px] xl:mt-10">
       <div className="relative">
         <h2 className="cat-heading font-light">
           {mediaType === "movie" ? "All Movies" : "All TV Series"}{" "}

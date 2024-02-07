@@ -38,7 +38,7 @@ const CollectionCard = ({ item, mediaType }) => {
           />
         </div>
 
-        <span
+        <button
           className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer  md:top-4 md:right-4"
           onClick={() => {
             mediaType === "movie"
@@ -51,7 +51,7 @@ const CollectionCard = ({ item, mediaType }) => {
           ) : (
             <BookmarkButton item={item} favorited={favoritedTvs} />
           )}
-        </span>
+        </button>
 
         <div className="opacity-0 group-hover:opacity-100 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out">
           <PlayButton videoId={item.id} mediaType={mediaType} />
