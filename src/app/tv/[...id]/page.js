@@ -11,9 +11,12 @@ import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import YouTube from "react-youtube";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import CollectionCard from "@/components/CollectionCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "../../styles/globals.css";
 
 // export function generateMetadata({ params }, parent) {
 //   return {
@@ -95,8 +98,8 @@ const page = ({ params }) => {
 
   // opts for youtube player
   const opts = {
-    height: "auto",
-    width: "100%",
+    height: "170px",
+    width: "auto",
     borderRadius: "8px",
     playerVars: {
       autoplay: 0,
@@ -207,16 +210,22 @@ const page = ({ params }) => {
                   slidesPerView: 5.2,
                 },
                 1024: {
+                  slidesPerView: 7.5,
+                  spaceBetween: 40,
+                },
+                1280: {
                   slidesPerView: 8.5,
                   spaceBetween: 40,
                 },
               }}
+              navigation={true}
+              modules={[Navigation]}
               className="mySwiper"
             >
               {credits?.cast.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="w-[240px] h-[120px] md:w-[470px] md:h-[120px]"
+                  className="w-[240px] h-[150px] md:w-[470px]"
                 >
                   <div className="flex justify-center flex-col items-center">
                     <div className="rounded-full w-[100px] h-[100px]">
@@ -260,24 +269,29 @@ const page = ({ params }) => {
               <ArrowForwardIosIcon sx={{ color: "white" }} />
             </h2>
             <Swiper
-              slidesPerView={"1.5"}
+              slidesPerView={"1.1"}
               spaceBetween={16}
               breakpoints={{
                 768: {
-                  slidesPerView: 3.2,
+                  slidesPerView: 2.2,
                 },
                 1024: {
-                  slidesPerView: 4.2,
+                  slidesPerView: 2.8,
+                },
+                1280: {
+                  slidesPerView: 3.9,
                   spaceBetween: 40,
                 },
               }}
+              navigation={true}
+              modules={[Navigation]}
               className="mySwiper"
             >
               {videos?.results.map((item, index) => (
-                <SwiperSlide key={index} className="w-[240px] h-[200px]">
-                  <div className="flex flex-col w-[240px] h-[200px]">
+                <SwiperSlide key={index} className="w-auto h-[200px]">
+                  <div className="flex flex-col w-auto h-[200px]">
                     <YouTube videoId={item?.key} opts={opts} />
-                    <h3 className="font-bold mt-1 cursor-default">
+                    <h3 className="font-bold mt-1 cursor-default truncate">
                       {item?.name}
                     </h3>
                   </div>
@@ -308,22 +322,27 @@ const page = ({ params }) => {
                 },
                 1024: {
                   slidesPerView: 3.2,
+                },
+                1280: {
+                  slidesPerView: 3.8,
                   spaceBetween: 40,
                 },
               }}
+              navigation={true}
+              modules={[Navigation]}
               className="mySwiper"
             >
               {photos?.backdrops.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="w-[240px] h-[200px] md:w-[400px] md:h-[400px]"
+                  className="w-[240px] h-[200px] md:w-[300px] md:h-[300px]"
                 >
                   <Image
                     src={`https://image.tmdb.org/t/p/original${item.file_path}`}
                     width={400}
                     height={400}
                     alt=""
-                    className="w-[240px] h-[200px] md:w-[400px] md:h-[400px] object-cover object-center rounded-[8px]"
+                    className="w-[240px] h-[200px] md:w-[300px] md:h-[300px] object-cover object-center rounded-[8px]"
                     priority={false}
                   />
                 </SwiperSlide>
@@ -332,7 +351,11 @@ const page = ({ params }) => {
           </div>
 
           {/* more like this  */}
-          <div className="mt-6 md:mt-10">
+          <div
+            className={`${
+              similar?.results?.length > 0 ? "mt-6 md:mt-10" : "hidden"
+            }`}
+          >
             <h2 className="font-bold text-[24px] mb-2 flex items-center md:text-[32px] md:mb-4">
               More Like This&nbsp;
               <ArrowForwardIosIcon sx={{ color: "white" }} />

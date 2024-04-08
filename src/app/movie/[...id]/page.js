@@ -153,7 +153,7 @@ const page = ({ params }) => {
                   <OpenInNewIcon sx={{ color: "white" }} />
                 </Link>
               </div>
-              <p className="text-[14px] font-light text-white/75 flex items-center space-x-[6px]">
+              <p className="text-[14px] font-light text-white/75 flex items-center">
                 Movie<span className="px-2">•</span>
                 {movie?.release_date?.toString().slice(0, 4)}
                 <span className="px-2">•</span>
