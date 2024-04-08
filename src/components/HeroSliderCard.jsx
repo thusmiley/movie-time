@@ -76,8 +76,8 @@ const HeroSliderCard = ({ item, mediaType }) => {
           <span>•</span>
           <p>{item.adult ? "R" : "PG"}</p>
         </div>
-        onClick={() => router.push(`/${mediaType}/${item.id}`)}
-        <h3 className="text-[15px] font-medium mt-1 cursor-pointer md:text-[24px]">
+       
+        <h3 className="text-[15px] font-medium mt-1 cursor-pointer md:text-[24px]" onClick={() => router.push(`/${mediaType}/${item.id}`)}>
           {item.title || item.name || "NA"}
         </h3>
       </div>
