@@ -14,14 +14,12 @@ const CollectionCard = ({ item, mediaType }) => {
     handleMoviesBookmarkClick,
     favoritedTvs,
     handleTvsBookmarkClick,
+    setSearchInput,
   } = useBookmarkContext();
   const router = useRouter();
 
   return (
-    <div
-      className="cursor-pointer"
-      onClick={() => router.push(`/${mediaType}/${item.id}`)}
-    >
+    <div className="">
       <div className="w-full relative group overflow-hidden rounded-[8px] z-0">
         <div className="relative h-[110px] md:h-[150px] xl:h-[200px] 2xl:h-[250px]">
           {!(item.backdrop_path && item.poster_path) ? (
@@ -43,29 +41,28 @@ const CollectionCard = ({ item, mediaType }) => {
               alt={`${item?.title || item?.name || ""}`}
               width={1653}
               height={929}
-              className="w-full h-[110px] rounded-[8px] object-cover object-center hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]"
+              className="w-full h-[110px] rounded-[8px] object-cover object-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]"
               // placeholder="blur"
               // blurDataURL={`${toBase64(shimmer(240, 140))}`}
               unoptimized
               loading="lazy"
+              onClick={() => {
+                setSearchInput("");
+                router.push(`/${mediaType}/${item.id}`);
+              }}
             />
           )}
         </div>
 
-        <button
-          className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer  md:top-4 md:right-4"
-          onClick={() => {
-            mediaType === "movie"
-              ? handleMoviesBookmarkClick(item)
-              : handleTvsBookmarkClick(item);
-          }}
-        >
-          {mediaType === "movie" ? (
-            <BookmarkButton item={item} favorited={favoritedMovies} />
-          ) : (
-            <BookmarkButton item={item} favorited={favoritedTvs} />
-          )}
-        </button>
+        {mediaType === "movie" ? (
+          <BookmarkButton
+            item={item}
+            favorited={favoritedMovies}
+            mediaType="movie"
+          />
+        ) : (
+          <BookmarkButton item={item} favorited={favoritedTvs} mediaType="tv" />
+        )}
 
         {/* <div className="opacity-0 group-hover:opacity-100 absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] transition-opacity duration-200 ease-in-out">
           <PlayButton videoId={item.id} mediaType={mediaType} />
@@ -103,7 +100,13 @@ const CollectionCard = ({ item, mediaType }) => {
           <span>•</span>
           <p>{item.adult ? "R" : "PG"}</p>
         </div>
-        <h3 className="text-[14px] font-medium mt-1 md:text-[18px] md:mt-[5px]">
+        <h3
+          className="text-[14px] font-medium mt-1 md:text-[18px] md:mt-[5px] cursor-pointer"
+          onClick={() => {
+            setSearchInput("");
+            router.push(`/${mediaType}/${item.id}`);
+          }}
+        >
           {item.title || item.name || "NA"}
         </h3>
       </div>

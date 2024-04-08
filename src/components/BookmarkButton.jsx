@@ -1,8 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useBookmarkContext } from "@/context/BookmarkContext";
 
-const BookmarkButton = ({ item, favorited }) => {
+const BookmarkButton = ({ item, favorited, mediaType }) => {
   const [isBookmarked, setIsBookmarked] = useState(favorited?.includes(item));
+  const { handleMoviesBookmarkClick, handleTvsBookmarkClick } =
+    useBookmarkContext();
 
   useEffect(() => {
     setIsBookmarked(
@@ -11,7 +14,14 @@ const BookmarkButton = ({ item, favorited }) => {
   }, [item, favorited]);
 
   return (
-    <div>
+    <button
+      className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-4"
+      onClick={() => {
+        mediaType === "movie"
+          ? handleMoviesBookmarkClick(item)
+          : handleTvsBookmarkClick(item);
+      }}
+    >
       {isBookmarked ? (
         <svg
           width="12"
@@ -41,7 +51,7 @@ const BookmarkButton = ({ item, favorited }) => {
           />
         </svg>
       )}
-    </div>
+    </button>
   );
 };
 

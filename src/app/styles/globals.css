@@ -85,4 +85,9 @@
       transform: translateX(100%);
     }
   }
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: transparent;
+    color: #FC4747;
+  }
 }/*# sourceMappingURL=globals.css.map */

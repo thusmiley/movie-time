@@ -11,8 +11,8 @@ import PaginationComponent from "./PaginationComponent";
 const sortOptions = [
   { id: "popularity.desc", name: "Most popular" },
   { id: "popularity.asc", name: "Least popular" },
-  { id: "title.asc", name: "A-Z" },
-  { id: "title.desc", name: "Z-A" },
+//   { id: "title.asc", name: "A-Z" },
+//   { id: "title.desc", name: "Z-A" },
   { id: "vote_average.desc", name: "Highest rating" },
   { id: "vote_average.asc", name: "Lowest rating" },
   { id: "primary_release_date.desc", name: "Newest" },
@@ -41,7 +41,7 @@ const AllMoviesTvsTemplate = ({ mediaType }) => {
       <div className="relative">
         <h2 className="cat-heading font-light">
           {mediaType === "movie" ? "All Movies" : "All TV Series"}{" "}
-          <span className="hidden md:inline">
+          <span className="hidden text-white/75 md:inline">
             ({data?.total_results.toLocaleString()} results)
           </span>
         </h2>

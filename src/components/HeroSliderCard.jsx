@@ -18,10 +18,7 @@ const HeroSliderCard = ({ item, mediaType }) => {
   } = useBookmarkContext();
 
   return (
-    <div
-      className="relative group cursor-pointer overflow-hidden rounded-[8px]"
-      onClick={() => router.push(`/${mediaType}/${item.id}`)}
-    >
+    <div className="relative group overflow-hidden rounded-[8px]">
       <Image
         src={`${
           item.backdrop_path
@@ -31,26 +28,22 @@ const HeroSliderCard = ({ item, mediaType }) => {
         alt={`${item.title || item.name || ""}`}
         width={1653}
         height={929}
-        className="w-full h-full rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
+        className="w-full h-full cursor-pointer rounded-[8px] object-cover group-hover:scale-105 transition-all duration-200 ease-in"
         placeholder="blur"
         blurDataURL={`${toBase64(shimmer(240, 140))}`}
         unoptimized
         loading="lazy"
+        onClick={() => router.push(`/${mediaType}/${item.id}`)}
       />
-      <span
-        className="bookmarkBtn bg-almostBlack/50 rounded-full w-8 h-8 grid place-content-center absolute top-2 right-2 hover:bg-white cursor-pointer transition-all duration-200 ease-in-out md:top-4 md:right-6"
-        onClick={() => {
-          mediaType === "movie"
-            ? handleMoviesBookmarkClick(item)
-            : handleTvsBookmarkClick(item);
-        }}
-      >
-        {mediaType === "movie" ? (
-          <BookmarkButton item={item} favorited={favoritedMovies} />
-        ) : (
-          <BookmarkButton item={item} favorited={favoritedTvs} />
-        )}
-      </span>
+      {mediaType === "movie" ? (
+        <BookmarkButton
+          item={item}
+          favorited={favoritedMovies}
+          mediaType="movie"
+        />
+      ) : (
+        <BookmarkButton item={item} favorited={favoritedTvs} mediaType="tv" />
+      )}
 
       <div className="linear-bg p-4 w-full rounded-b-[8px] absolute bottom-0 md:p-6">
         <div className="text-[12px] font-light text-white/75 flex items-center space-x-2 md:text-[15px]">
@@ -83,7 +76,8 @@ const HeroSliderCard = ({ item, mediaType }) => {
           <span>•</span>
           <p>{item.adult ? "R" : "PG"}</p>
         </div>
-        <h3 className="text-[15px] font-medium mt-1 md:text-[24px]">
+        onClick={() => router.push(`/${mediaType}/${item.id}`)}
+        <h3 className="text-[15px] font-medium mt-1 cursor-pointer md:text-[24px]">
           {item.title || item.name || "NA"}
         </h3>
       </div>

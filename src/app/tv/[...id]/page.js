@@ -37,6 +37,7 @@ const page = ({ params }) => {
   const [photos, setPhotos] = useState();
   const [similar, setSimilar] = useState();
 
+  // fetch data
   const reRenderData = () => {
     if (!params.id) return;
 
@@ -92,6 +93,7 @@ const page = ({ params }) => {
     reRenderData();
   }, []);
 
+  // opts for youtube player
   const opts = {
     height: "auto",
     width: "100%",
@@ -139,7 +141,7 @@ const page = ({ params }) => {
             {/* intro  */}
             <div className="mt-6 md:w-1/2 md:mt-0">
               <div className="flex items-center">
-                <h1 className="text-[32px] font-bold mr-1 md:text-[48px]">
+                <h1 className="text-[32px] font-bold mr-[6px] md:text-[48px]">
                   {tv?.name}
                 </h1>
                 <Link href={`${tv?.homepage}`}>
@@ -153,15 +155,15 @@ const page = ({ params }) => {
                 <span className="px-2">•</span>
                 {tv?.number_of_seasons} seasons
                 <span className="px-2">•</span>
-                {tv?.number_of_episodes} episodes
+                {tv?.number_of_episodes.toLocaleString()} episodes
               </p>
               {/* ratings */}
               <div className="flex items-center mt-2">
                 <StarRateRoundedIcon sx={{ color: "yellow" }} />
                 <p className="tracking-[1px] ml-1">
-                  {tv?.vote_average.toFixed(2)}
+                  {tv?.vote_average.toFixed(1)}
                   <span className="space-x-1 text-white/75">
-                    /10&nbsp;({tv?.vote_count} ratings)
+                    /10&nbsp;({tv?.vote_count.toLocaleString()} ratings)
                   </span>
                 </p>
               </div>
