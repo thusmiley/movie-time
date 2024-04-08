@@ -258,7 +258,7 @@ const page = ({ params }) => {
               <ArrowForwardIosIcon sx={{ color: "white" }} />
             </h2>
             <Swiper
-              slidesPerView={"1.4"}
+              slidesPerView={"1.5"}
               spaceBetween={16}
               breakpoints={{
                 768: {
@@ -298,7 +298,7 @@ const page = ({ params }) => {
               <ArrowForwardIosIcon sx={{ color: "white" }} />
             </h2>
             <Swiper
-              slidesPerView={"1.4"}
+              slidesPerView={"1.5"}
               spaceBetween={16}
               breakpoints={{
                 768: {
