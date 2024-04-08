@@ -12,7 +12,7 @@ const PaginationComponent = ({ totalPages, setPage, page }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-    const maxpage = totalPages > 500 ? "500" : totalPages;
+    const maxpage = totalPages > 500 ? 500 : totalPages;
 
   return (
     <div className="flex justify-center mt-10">

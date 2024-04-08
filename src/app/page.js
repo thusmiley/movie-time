@@ -5,6 +5,10 @@ import HeroSlider from "@/components/HeroSlider";
 import SearchResults from "@/components/SearchResults";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 
+// export const metadata = {
+//   title: "Login | My Invoice App",
+// };
+
 export default function Home() {
   const {
     searchInput,
@@ -37,20 +41,20 @@ export default function Home() {
             />
             <Collection
               mediaType="movie"
-              title="Top Rated"
-              limit={9}
+              title="Top 10 of All Time"
+              limit={10}
               list="top_rated"
             />
 
             <Collection
               mediaType="movie"
-              title="Popular"
+              title="Fan Favorites"
               limit={9}
               list="popular"
             />
             <Collection
               mediaType="movie"
-              title="Upcoming"
+              title="Coming Soon To Theaters"
               limit={9}
               list="upcoming"
             />
@@ -66,19 +70,19 @@ export default function Home() {
             />
             <Collection
               mediaType="tv"
-              title="On The Air"
+              title="Streaming"
               limit={9}
               list="on_the_air"
             />
             <Collection
               mediaType="tv"
-              title="Top Rated"
+              title="Fan Favorites"
               limit={9}
               list="top_rated"
             />
             <Collection
               mediaType="tv"
-              title="Airing Today"
+              title="Featured Today"
               limit={9}
               list="airing_today"
             />

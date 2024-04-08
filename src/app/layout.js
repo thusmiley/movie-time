@@ -5,8 +5,22 @@ import Footer from "@/components/Footer";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata = {
-  title: "Serial Chiller",
-  description: "Made by Thu Smiley @Naughty Cat",
+  title: {
+    template: "%s | Serial Chiller",
+    default: "Serial Chiller",
+  },
+  openGraph: {
+    description: "Made by Thu Smiley @Naughty Cat",
+    url: "https://serial-chiller-ten.vercel.app/",
+    siteName: "Serial Chiller",
+    images: [],
+    locale: "en_US",
+    type: "website",
+  },
+  keywords: ["Next.js", "React", "JavaScript", "Tailwind", "SASS"],
+  authors: [
+    { name: "Thu Smiley @Naughty Cat", url: "https://thusmiley.com/" },
+  ],
 };
 
 export default function RootLayout({ children }) {

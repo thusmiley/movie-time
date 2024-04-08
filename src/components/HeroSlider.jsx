@@ -67,10 +67,10 @@ const HeroSlider = ({ mediaType, setMediaType, title, isHome, list }) => {
             spaceBetween: 40,
           },
         }}
-        // autoplay={{
-        //   delay: 2500,
-        // }}
-        // modules={[Autoplay]}
+        autoplay={{
+          delay: 2500,
+        }}
+        modules={[Autoplay]}
         className="mySwiper"
       >
         {data?.results?.slice(0, 10).map((item) => (
