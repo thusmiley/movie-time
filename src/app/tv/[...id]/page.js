@@ -269,7 +269,7 @@ const page = ({ params }) => {
               <ArrowForwardIosIcon sx={{ color: "white" }} />
             </h2>
             <Swiper
-              slidesPerView={"1.1"}
+              slidesPerView={"1.2"}
               spaceBetween={16}
               breakpoints={{
                 768: {
@@ -294,7 +294,7 @@ const page = ({ params }) => {
                 <SwiperSlide key={index} className="w-auto h-[200px]">
                   <div className="flex flex-col w-auto h-[200px]">
                     <YouTube videoId={item?.key} opts={opts} />
-                    <h3 className="font-bold mt-1 cursor-default truncate">
+                    <h3 className="font-bold mt-1 cursor-default truncate w-auto">
                       {item?.name}
                     </h3>
                   </div>

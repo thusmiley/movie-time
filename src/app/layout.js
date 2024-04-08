@@ -11,9 +11,8 @@ export const metadata = {
   },
   openGraph: {
     description: "Made by Thu Smiley @Naughty Cat",
-    url: "https://serial-chiller-ten.vercel.app/",
+    metadataBase: new URL("https://serial-chiller-ten.vercel.app/"),
     siteName: "Serial Chiller",
-    images: [],
     locale: "en_US",
     type: "website",
   },
