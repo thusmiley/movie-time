@@ -2,6 +2,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
+import "/src/app/styles/globals.css";
 import { useState, useEffect } from "react";
 import "dotenv/config";
 import { options } from "@/utils";
@@ -71,6 +74,8 @@ const HeroSlider = ({ mediaType, setMediaType, title, isHome, list }) => {
           delay: 2500,
         }}
         modules={[Autoplay]}
+        navigation={true}
+        modules={[Navigation]}
         className="mySwiper"
       >
         {data?.results?.slice(0, 10).map((item) => (

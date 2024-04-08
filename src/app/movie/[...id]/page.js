@@ -227,10 +227,7 @@ const page = ({ params }) => {
                   spaceBetween: 40,
                 },
               }}
-              navigation={{
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prevs",
-              }}
+              navigation={true}
               modules={[Navigation]}
               className="mySwiper"
             >
