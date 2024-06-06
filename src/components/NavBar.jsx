@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import logo from "../../public/images/logo.svg";
-import avatar from "../../public/images/image-avatar.png";
+import avatar from "../../public/images/image-avatar.jpeg";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const NavBar = () => {
