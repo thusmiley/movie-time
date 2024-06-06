@@ -129,13 +129,15 @@ const NavBar = () => {
           </div>
 
           {/* avatar */}
-          <Image
-            src={avatar}
-            alt="movie time logo"
-            width={116}
-            height={116}
-            className="w-8 h-auto object-cover object-center rounded-full"
-          />
+          <Link href="https://www.naughty-cat.com/" target="_blank">
+            <Image
+              src={avatar}
+              alt="movie time logo"
+              width={116}
+              height={116}
+              className="w-8 h-auto object-cover object-center rounded-full"
+            />
+          </Link>
         </nav>
       </div>
     </header>
