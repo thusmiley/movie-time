@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import logo from "../../public/images/logo.svg";
-import avatar from "../../public/images/image-avatar.jpeg";
+import avatar from "../../public/images/image-avatar.jpg";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 
 const NavBar = () => {
@@ -132,7 +132,9 @@ const NavBar = () => {
           <Image
             src={avatar}
             alt="movie time logo"
-            className="w-8 h-auto object-contain object-center rounded-full"
+            width={116}
+            height={116}
+            className="w-8 h-auto object-cover object-center rounded-full"
           />
         </nav>
       </div>
