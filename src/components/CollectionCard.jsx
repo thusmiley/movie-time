@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import movieIcon from "../../public/images/icon-movie.svg";
 import tvIcon from "../../public/images/icon-tv.svg";
 import PlayButton from "./PlayButton";
 import BookmarkButton from "./BookmarkButton";
 import { useBookmarkContext } from "@/context/BookmarkContext";
 import Skeleton from "@mui/material/Skeleton";
-import { useRouter } from "next/navigation";
 
 const CollectionCard = ({ item, mediaType }) => {
   const {
@@ -16,7 +16,6 @@ const CollectionCard = ({ item, mediaType }) => {
     handleTvsBookmarkClick,
     setSearchInput,
   } = useBookmarkContext();
-  const router = useRouter();
 
   return (
     <div className="">
@@ -33,24 +32,22 @@ const CollectionCard = ({ item, mediaType }) => {
               <div className="w-full h-[110px] rounded-[8px] object-cover object-center hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]" />
             </Skeleton>
           ) : (
-            <Image
-              src={
-                `https://image.tmdb.org/t/p/original${item.backdrop_path}` ||
-                `https://image.tmdb.org/t/p/original${item.poster_path}`
-              }
-              alt={`${item?.title || item?.name || ""}`}
-              width={1653}
-              height={929}
-              className="w-full h-[110px] rounded-[8px] object-cover object-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]"
-              // placeholder="blur"
-              // blurDataURL={`${toBase64(shimmer(240, 140))}`}
-              unoptimized
-              loading="lazy"
-              onClick={() => {
-                setSearchInput("");
-                router.push(`/${mediaType}/${item.id}`);
-              }}
-            />
+            <Link rel="canonical" href={`/${mediaType}/${item.id}`}>
+              <Image
+                src={
+                  `https://image.tmdb.org/t/p/original${item.backdrop_path}` ||
+                  `https://image.tmdb.org/t/p/original${item.poster_path}`
+                }
+                alt={`${item?.title || item?.name || ""}`}
+                width={1653}
+                height={929}
+                className="w-full h-[110px] rounded-[8px] object-cover object-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]"
+                // placeholder="blur"
+                // blurDataURL={`${toBase64(shimmer(240, 140))}`}
+                unoptimized
+                loading="lazy"
+              />
+            </Link>
           )}
         </div>
 
@@ -100,15 +97,16 @@ const CollectionCard = ({ item, mediaType }) => {
           <span>•</span>
           <p>{item.adult ? "R" : "PG"}</p>
         </div>
-        <h3
-          className="text-[14px] font-medium mt-1 md:text-[18px] md:mt-[5px] cursor-pointer"
-          onClick={() => {
-            setSearchInput("");
-            router.push(`/${mediaType}/${item.id}`);
-          }}
-        >
-          {item.title || item.name || "NA"}
-        </h3>
+        <Link rel="canonical" href={`/${mediaType}/${item.id}`}>
+          <h3
+            className="text-[14px] font-medium mt-1 md:text-[18px] md:mt-[5px] cursor-pointer"
+            onClick={() => {
+              setSearchInput("");
+            }}
+          >
+            {item.title || item.name || "NA"}
+          </h3>
+        </Link>
       </div>
     </div>
   );
