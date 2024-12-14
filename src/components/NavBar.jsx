@@ -131,7 +131,7 @@ const NavBar = () => {
           {/* avatar */}
           <Link href="https://www.naughty-cat.com/" target="_blank">
             <img
-              src="../../public/images/image-avatar.jpg"
+              src="./images/image-avatar.jpg"
               alt="movie time logo"
               className="w-8 h-auto object-cover object-center rounded-full"
             />
