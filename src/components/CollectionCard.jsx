@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import movieIcon from "../../public/images/icon-movie.svg";
 import tvIcon from "../../public/images/icon-tv.svg";
@@ -33,14 +32,12 @@ const CollectionCard = ({ item, mediaType }) => {
             </Skeleton>
           ) : (
             <Link rel="canonical" href={`/${mediaType}/${item.id}`}>
-              <Image
+              <img
                 src={
                   `https://image.tmdb.org/t/p/original${item.backdrop_path}` ||
                   `https://image.tmdb.org/t/p/original${item.poster_path}`
                 }
                 alt={`${item?.title || item?.name || ""}`}
-                width={1653}
-                height={929}
                 className="w-full h-[110px] rounded-[8px] object-cover object-center cursor-pointer hover:scale-105 transition-all duration-200 ease-in md:h-[150px] xl:h-[200px] 2xl:h-[250px]"
                 // placeholder="blur"
                 // blurDataURL={`${toBase64(shimmer(240, 140))}`}
@@ -76,18 +73,14 @@ const CollectionCard = ({ item, mediaType }) => {
           <span>•</span>
           <div className="flex items-center space-x-1">
             {mediaType === "movie" ? (
-              <Image
+              <img
                 src={movieIcon}
-                width={12}
-                height={12}
                 className="w-3 h-3"
                 alt="movie icon"
               />
             ) : (
-              <Image
+              <img
                 src={tvIcon}
-                width={12}
-                height={12}
                 className="w-3 h-3"
                 alt="tv icon"
               />

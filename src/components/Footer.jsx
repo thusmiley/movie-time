@@ -1,5 +1,4 @@
 import tmdbLogo from "../../public/images/tmdb logo.svg";
-import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
@@ -10,10 +9,8 @@ const Footer = () => {
           Powered by
         </p>
         <Link href="https://www.themoviedb.org">
-          <Image
-            src={tmdbLogo}
-            width={40}
-            height={190}
+          <img
+            src="/images/tmdb logo.svg"
             alt="tmdb logo"
             className="w-[171px] h-auto object-contain object-center"
           />

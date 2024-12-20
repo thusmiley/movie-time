@@ -4,7 +4,6 @@ import { options } from "@/utils";
 import Search from "@/components/Search";
 import SearchResults from "@/components/SearchResults";
 import { useBookmarkContext } from "@/context/BookmarkContext";
-import Image from "next/image";
 import Link from "next/link";
 import Skeleton from "@mui/material/Skeleton";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
@@ -126,14 +125,12 @@ const page = ({ params }) => {
                   <div className="w-full h-[500px] rounded-[8px] object-cover object-center" />
                 </Skeleton>
               ) : (
-                <Image
+                <img
                   src={
                     `https://image.tmdb.org/t/p/original${tv?.backdrop_path}` ||
                     `https://image.tmdb.org/t/p/original${tv?.poster_path}`
                   }
                   alt={`${tv?.title || tv?.name || ""}`}
-                  width={1653}
-                  height={929}
                   className="w-full h-[500px] rounded-[8px] object-cover object-center"
                   unoptimized
                   loading="lazy"
@@ -230,7 +227,7 @@ const page = ({ params }) => {
                   <div className="flex justify-center flex-col items-center">
                     <div className="rounded-full w-[100px] h-[100px]">
                       {item.profile_path ? (
-                        <Image
+                        <img
                           src={`https://image.tmdb.org/t/p/original${item.profile_path}`}
                           width={100}
                           height={100}
@@ -321,14 +318,14 @@ const page = ({ params }) => {
               spaceBetween={16}
               breakpoints={{
                 768: {
-                  slidesPerView: 2.2,
+                  slidesPerView: 1.2,
                 },
                 1024: {
                   slidesPerView: 3.2,
                 },
                 1280: {
-                  slidesPerView: 3.8,
-                  spaceBetween: 40,
+                  slidesPerView: 2.8,
+                  spaceBetween: 20,
                 },
               }}
               navigation={true}
@@ -340,12 +337,12 @@ const page = ({ params }) => {
                   key={index}
                   className="w-[240px] h-[200px] md:w-[300px] md:h-[300px]"
                 >
-                  <Image
+                  <img
                     src={`https://image.tmdb.org/t/p/original${item.file_path}`}
                     width={400}
                     height={400}
                     alt=""
-                    className="w-[240px] h-[200px] md:w-[300px] md:h-[300px] object-cover object-center rounded-[8px]"
+                    className="w-[300px] h-[200px] md:w-[500px] md:h-[300px] object-cover object-center rounded-[8px]"
                     priority={false}
                   />
                 </SwiperSlide>

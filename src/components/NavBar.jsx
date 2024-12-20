@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import logo from "../../public/images/logo.svg";
@@ -23,8 +22,8 @@ const NavBar = () => {
               setMediaType("movie");
             }}
           >
-            <Image
-              src={logo}
+            <img
+              src="/images/logo.svg"
               alt="movie time logo"
               className="w-8 h-auto object-contain object-center cursor-pointer"
             />
@@ -131,7 +130,7 @@ const NavBar = () => {
           {/* avatar */}
           <Link href="https://www.naughty-cat.com/" target="_blank">
             <img
-              src="./images/image-avatar.jpg"
+              src="/images/image-avatar.jpg"
               alt="movie time logo"
               className="w-8 h-auto object-cover object-center rounded-full"
             />
