@@ -1,7 +1,5 @@
 "use client";
 import Link from "next/link";
-import movieIcon from "../../public/images/icon-movie.svg";
-import tvIcon from "../../public/images/icon-tv.svg";
 import PlayButton from "./PlayButton";
 import BookmarkButton from "./BookmarkButton";
 import { useBookmarkContext } from "@/context/BookmarkContext";
@@ -74,13 +72,13 @@ const CollectionCard = ({ item, mediaType }) => {
           <div className="flex items-center space-x-1">
             {mediaType === "movie" ? (
               <img
-                src={movieIcon}
+                src="/images/icon-movie.svg"
                 className="w-3 h-3"
                 alt="movie icon"
               />
             ) : (
               <img
-                src={tvIcon}
+                src="/images/icon-tv.svg"
                 className="w-3 h-3"
                 alt="tv icon"
               />
